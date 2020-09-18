@@ -1,32 +1,32 @@
 import React from 'react';
-import { Tab, Tabs } from 'react-bootstrap';
 import logo from './logo.svg';
-// import './App.css';
+import HeaderBar from './components/HeaderBar.js';
+import SideNav from './components/SideNav.js';
+import Test from './pages/Test.js';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { LoremIpsum } from 'react-lorem-ipsum';
+
 import 'bootstrap/dist/css/bootstrap.css';
-import Sonnet from './components/Sonnet';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <div>
-				Nom Profile
-      </div>
-      <div>
-      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-				<Tab eventKey="home" title="Home">
-						<Sonnet />
-				</Tab>
-				<Tab eventKey="profile" title="Profile">
-						<Sonnet />
-				</Tab>
-				<Tab eventKey="contact" title="Contact">
-						<Sonnet />
-				</Tab>
-				</Tabs>
-			</div>
-      </header>
-    </div>
+    <>
+      <SideNav>
+        <header>
+          <HeaderBar />
+        </header>
+        <body className>
+          <a href="home">Home</a>
+          <LoremIpsum p={20} />
+          <Router>
+            <Route path="/home" component={Test}/>
+            <Route path="/notifications" component={Test}/>
+            <Route path="/messages" component={Test}/>
+          </Router>
+        </body>
+      </SideNav>
+    </>
   );
 }
 
