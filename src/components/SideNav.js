@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { BsFillPersonCheckFill, BsBuilding, BsGraphUp } from 'react-icons/bs';
+import { BsFillPersonCheckFill, BsBuilding, BsGraphUp, BsChevronCompactRight } from 'react-icons/bs';
 
 import { Nav } from 'react-bootstrap'
-
+import { Swipeable } from 'react-swipeable'
 import Sidebar from "react-sidebar";
 
 export default function SideNav(props) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-      <Sidebar
+      <Sidebar className="w-100"
         sidebar={
           <div className="d-flex h-100">
           <Nav navbar className="d-flex flex-column align-self-center">
@@ -19,14 +19,17 @@ export default function SideNav(props) {
           </Nav>
           </div>
         }
+        touch={true}
+        touchHandleWidth={0}
         open={sidebarOpen}
         onSetOpen={setSidebarOpen}
         styles={{ sidebar: { background: "white", position: "fixed" } }}
       >
-        <div className="h-100 position-fixed d-flex">
-          <div draggable={true} onDragStart={() => setSidebarOpen(true)} className="side-bar-button d-flex align-self-center bg-dark">
-          </div>
-        </div>
+      <div className="d-flex side-bar-zone position-fixed">
+      <Swipeable className="d-flex align-self-center side-bar-button" onSwipedRight={ (event) => { setSidebarOpen(true) } } >
+        <BsChevronCompactRight className="side-bar-button" size={32}/>
+      </Swipeable>
+      </div>
         {props.children}
       </Sidebar>
   )
