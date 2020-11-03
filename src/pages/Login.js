@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
+import Auth from '../services/Auth.js';
+
+import axios from 'axios'; // TODO
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -7,6 +10,13 @@ export default function LoginPage() {
   
   function onSubmit(e) {
     e.preventDefault();
+    const user = Auth.login(email, password).then((user) => {
+      axios.get("http://localhost:3001/api/test",
+      {headers: Auth.headers}
+      ).then((res) => {
+        console.log(res);
+      })
+    });
   }
   
   return (
