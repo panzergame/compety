@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import { Form, FormControl, Button, Col, ListGroup } from 'react-bootstrap';
+import { FormControl, Button, ListGroup } from 'react-bootstrap';
 import { BsSearch, BsArrowReturnLeft } from 'react-icons/bs';
 
 export default function HeaderBar(props) {

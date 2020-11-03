@@ -1,10 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import HeaderBar from './components/HeaderBar.js';
-import SideNav from './components/SideNav.js';
+
+import NavWrapper from './components/NavWrapper.js';
+
 import Test from './pages/Test.js';
 import SearchPage from './pages/Search.js';
 import CompetencyPage from './pages/Competency.js';
+import LoginPage from './pages/Login.js';
+import RegisterPage from './pages/Register.js';
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -12,30 +15,25 @@ import './App.css';
 
 function App() {
   return (
-    <>
-      <SideNav>
-        <header>
-          <HeaderBar />
-        </header>
+    <Router>
+      <Switch>
+        <Route path="/" exact><NavWrapper><Test /></NavWrapper></Route>
 
-        <Router>
-          <Switch>
-            <Route path="/" exact><Test /></Route>
+        <Route path="/login" exact><LoginPage /></Route>
+        <Route path="/register" exact><RegisterPage /></Route>
 
-            <Route path="/competency/search/:query?"><SearchPage /></Route>
-            <Route path="/competency/:competencyId"><CompetencyPage /></Route>          
-            
-            <Route path="/company/search/:query?"><SearchPage /></Route>
-            <Route path="/company/:competencyId"><CompetencyPage /></Route>       
-            
-            <Route path="/profile/:profileId"><Test /></Route>
-            <Route path="/profile/competency/search/:profileId:query?"><Test /></Route>
-            <Route path="/profile/notifications/:profileId"><Test /></Route>
-            <Route path="/profile/messages/:profileId"><Test /></Route>
-          </Switch>
-        </Router>
-      </SideNav>
-    </>
+        <Route path="/competency/search/:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
+        <Route path="/competency/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>          
+        
+        <Route path="/company/search/:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
+        <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>       
+        
+        <Route path="/profile/:profileId"><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/profile/competency/search/:profileId:query?"><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/profile/notifications/:profileId"><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/profile/messages/:profileId"><NavWrapper><Test /></NavWrapper></Route>
+      </Switch>
+    </Router>
   );
 }
 
