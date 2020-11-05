@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios';
 
-const URL = 'http://localhost:3001/';
+const URL = 'http://localhost:3001/api/action';
 
 // Service de connexion/deconnexion enregistrant le token et l'utilisateur courant'
-class Auth {
+class AuthService {
   login(login, password) {
     return axios
       .post(URL + 'login', {
@@ -41,4 +41,4 @@ class Auth {
   }
 }
 
-export default new Auth();
+export default new AuthService();

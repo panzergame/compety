@@ -23,10 +23,10 @@ function App() {
         <Route path="/register" exact><RegisterPage /></Route>
 
         <Route path="/competency/search/:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
-        <Route path="/competency/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>          
+        <Route path="/competency/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>
         
         <Route path="/company/search/:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
-        <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>       
+        <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>     
         
         <Route path="/profile/:profileId"><NavWrapper><Test /></NavWrapper></Route>
         <Route path="/profile/competency/search/:profileId:query?"><NavWrapper><Test /></NavWrapper></Route>

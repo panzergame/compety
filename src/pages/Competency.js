@@ -1,8 +1,10 @@
 import React from 'react'
-import { LoremIpsum } from 'react-lorem-ipsum';
+import { useParams } from "react-router-dom";
+import Competency from '../components/Competency.js';
 
 export default function CompetencyPage() {
+  const { competencyId } = useParams();
   return (
-    <LoremIpsum p={20} />
+    <Competency id={competencyId}/>
   );
 }
