@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
+import AuthService from '../services/Auth.js';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
+  const [dayofbirth, setDayofbirth] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log(email);
+    AuthService.register(email, dayofbirth, password).then(() => {
+      window.location.href = '/'
+    });
   }
 
   return (
@@ -17,6 +21,10 @@ export default function RegisterPage() {
         <Form.Group>
           <Form.Label>Adresse email</Form.Label>
           <Form.Control required type="email" placeholder="Entrez votre adresse email" onChange={(e) => setEmail(e.target.value) }/>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Date de naissance</Form.Label>
+          <Form.Control type="date" name="dayofbirth" placeholder="Date of Birth" onChange={(e) => setDayofbirth(e.target.value) }/>
         </Form.Group>
 
         <Form.Group>

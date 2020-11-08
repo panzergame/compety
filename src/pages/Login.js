@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import AuthService from '../services/Auth.js';
+import { useHistory } from 'react-router-dom';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -8,7 +9,9 @@ export default function LoginPage() {
   
   function onSubmit(e) {
     e.preventDefault();
-    AuthService.login(email, password);
+    AuthService.login(email, password).then(() => {
+      window.location.href = '/'
+    });
   }
   
   return (

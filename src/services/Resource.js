@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 
-const URL = 'http://localhost:3001/api/resource/';
+const URL = 'http://192.168.1.37:3001/api/resource/'; // TODO
 
 class ResourceService {
   competency(id) {
