@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react'
-import ResourceService from '../services/Resource.js';
 import { Button } from 'react-bootstrap';
+import ResourceService from '../services/Resource.js';
+import UserService from '../services/User.js';
 
 
 export default function Competency(props) {
@@ -13,8 +14,14 @@ export default function Competency(props) {
       setCompetency(competency);
       setLoading(false);
     });
-  }, []);
+  }, [props.id]);
   
+  function onClick(e) {
+    UserService.validateCompetency(competency.id).then(item => {
+      console.log(item);
+    })
+  }
+
   if (isLoading) {
     return <div>Chargement...</div>;
   }
@@ -23,7 +30,7 @@ export default function Competency(props) {
     <div className="d-flex flex-column w-100">
       <h2 className="d-flex justify-content-center w-100">{ competency.title }</h2>
       <div>{ competency.description }</div>
-      <Button>Ajouter à mes compétences</Button>
+      <Button onClick={onClick}>Ajouter à mes compétences</Button>
     </div>
   );
 }

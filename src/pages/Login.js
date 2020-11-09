@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import AuthService from '../services/Auth.js';
-import { useHistory } from 'react-router-dom';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
