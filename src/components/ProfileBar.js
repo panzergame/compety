@@ -18,7 +18,9 @@ export default function ProfileName() {
   }
   else {
     return (
-      <Nav.Link href="login">Se connecter</Nav.Link>
+      <Navbar.Collapse className="justify-content-end">
+        <Nav.Link href="login">Se connecter</Nav.Link>
+      </Navbar.Collapse>
     );
   }
 }

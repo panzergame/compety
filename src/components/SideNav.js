@@ -13,8 +13,8 @@ export default function SideNav(props) {
         sidebar={
           <div className="d-flex h-100">
           <Nav navbar className="d-flex flex-column align-self-center">
-              <Nav.Link href="competencies"><BsFillPersonCheckFill /></Nav.Link>
-              <Nav.Link href="companies"><BsBuilding /></Nav.Link>
+              <Nav.Link href="competency"><BsFillPersonCheckFill /></Nav.Link>
+              <Nav.Link href="company"><BsBuilding /></Nav.Link>
               <Nav.Link href="stats"><BsGraphUp /></Nav.Link>
           </Nav>
           </div>

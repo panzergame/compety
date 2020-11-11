@@ -3,7 +3,7 @@ import React from 'react';
 import NavWrapper from './components/NavWrapper.js';
 
 import Test from './pages/Test.js';
-import SearchPage from './pages/Search.js';
+import SearchCompetencyPage from './pages/SearchCompetency.js';
 import CompetencyPage from './pages/Competency.js';
 import LoginPage from './pages/Login.js';
 import RegisterPage from './pages/Register.js';
@@ -23,11 +23,11 @@ function App() {
         <Route path="/login" exact><LoginPage /></Route>
         <Route path="/register" exact><RegisterPage /></Route>
 
-        <Route path="/competency/search/:profileId?:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
-        <Route path="/competency/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>
+        <Route path="/competency/search/"><NavWrapper><SearchCompetencyPage /></NavWrapper></Route>
+        <Route path="/competency/"><NavWrapper><CompetencyPage /></NavWrapper></Route>
         
-        <Route path="/company/search/:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
-        <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>     
+//         <Route path="/company/search/:query?"><NavWrapper><SearchCompetencyPage /></NavWrapper></Route>
+//         <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>     
         
         <Route path="/profile"><NavWrapper><ProfilePage /></NavWrapper></Route>
         <Route path="/profile/notifications"><NavWrapper><Test /></NavWrapper></Route>

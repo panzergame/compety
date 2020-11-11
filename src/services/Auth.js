@@ -14,8 +14,8 @@ class AuthService {
       .then(response => {
         if (response.data.token) {
           console.log('Logged');
-          localStorage.setItem('token', response.data.token);
-          localStorage.setItem('user', JSON.stringify(response.data.user));
+          sessionStorage.setItem('token', response.data.token);
+          sessionStorage.setItem('user', JSON.stringify(response.data.user));
         }
 
         return response.data;
@@ -34,8 +34,8 @@ class AuthService {
       .then(response => {
           if (response.data.token) {
             console.log('Logged');
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('user', JSON.stringify(response.data.user));
+            sessionStorage.setItem('token', response.data.token);
+            sessionStorage.setItem('user', JSON.stringify(response.data.user));
           }
 
           return response.data;
@@ -43,17 +43,17 @@ class AuthService {
   }
 
   logout(login, password) {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
     console.log('Unlogged');
   }
 
   get user() {
-    return JSON.parse(localStorage.getItem('user'));
+    return JSON.parse(sessionStorage.getItem('user'));
   }
 
   get token() {
-    return localStorage.getItem('token')
+    return sessionStorage.getItem('token')
   }
   
   get headers() {

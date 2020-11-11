@@ -12,6 +12,13 @@ class ResourceService {
         return response.data;
       });
   }
+
+  searchCompetencies(query, profileId) {
+    return axios.get(URL + "competency/search/", {headers: AuthService.headers, params: {query, profileId}})
+      .then(response => {
+        return response.data;
+      });
+  }
 }
 
 export default new ResourceService();
