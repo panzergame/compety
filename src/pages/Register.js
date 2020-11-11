@@ -4,13 +4,15 @@ import AuthService from '../services/Auth.js';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
   const [dayofbirth, setDayofbirth] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   function onSubmit(e) {
     e.preventDefault();
-    AuthService.register(email, dayofbirth, password).then(() => {
+    AuthService.register(email, firstname, lastname, dayofbirth, password).then(() => {
       window.location.href = '/'
     });
   }
@@ -21,6 +23,14 @@ export default function RegisterPage() {
         <Form.Group>
           <Form.Label>Adresse email</Form.Label>
           <Form.Control required type="email" placeholder="Entrez votre adresse email" onChange={(e) => setEmail(e.target.value) }/>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Prénom</Form.Label>
+          <Form.Control required type="name" placeholder="Entrez votre prénom" onChange={(e) => setFirstname(e.target.value) }/>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Nom</Form.Label>
+          <Form.Control required type="name" placeholder="Entrez votre nom" onChange={(e) => setLastname(e.target.value) }/>
         </Form.Group>
         <Form.Group>
           <Form.Label>Date de naissance</Form.Label>

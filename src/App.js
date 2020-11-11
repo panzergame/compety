@@ -7,6 +7,7 @@ import SearchPage from './pages/Search.js';
 import CompetencyPage from './pages/Competency.js';
 import LoginPage from './pages/Login.js';
 import RegisterPage from './pages/Register.js';
+import ProfilePage from './pages/Profile.js';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -22,16 +23,15 @@ function App() {
         <Route path="/login" exact><LoginPage /></Route>
         <Route path="/register" exact><RegisterPage /></Route>
 
-        <Route path="/competency/search/:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
+        <Route path="/competency/search/:profileId?:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
         <Route path="/competency/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>
         
         <Route path="/company/search/:query?"><NavWrapper><SearchPage /></NavWrapper></Route>
         <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>     
         
-        <Route path="/profile/:profileId"><NavWrapper><Test /></NavWrapper></Route>
-        <Route path="/profile/competency/search/:profileId:query?"><NavWrapper><Test /></NavWrapper></Route>
-        <Route path="/profile/notifications/:profileId"><NavWrapper><Test /></NavWrapper></Route>
-        <Route path="/profile/messages/:profileId"><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/profile"><NavWrapper><ProfilePage /></NavWrapper></Route>
+        <Route path="/profile/notifications"><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/profile/messages"><NavWrapper><Test /></NavWrapper></Route>
       </Switch>
     </Router>
   );

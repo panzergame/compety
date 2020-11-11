@@ -22,10 +22,12 @@ class AuthService {
       });
   }
 
-  register(login, dayofbirth, password) {
+  register(login, firstname, lastname, dayofbirth, password) {
     console.log(login, dayofbirth, password)
     return axios.post(URL + 'register', {
         login,
+        firstname,
+        lastname,
         dayofbirth,
         password
       })
