@@ -6,10 +6,12 @@ import SideNav from './SideNav.js';
 export default function NavWrapper(props) {
   return (
     <SideNav>
-      <header>
+      <div className="d-flex flex-column flex-grow-1 h-100">
         <HeaderBar />
-      </header>
-      {props.children}
+        <div className="d-flex flex-column flex-grow-1">
+          {props.children}
+        </div>
+      </div>
     </SideNav>
   );
 }

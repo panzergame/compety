@@ -1,5 +1,6 @@
 .side-bar-zone {
   height: 100%;
+  z-index: 10;
 }
 
 .side-bar-button {

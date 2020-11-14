@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import { Button } from 'react-bootstrap';
+import { Accordion, Card, Button, ListGroup } from 'react-bootstrap';
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
 
@@ -10,7 +10,6 @@ export default function CompetencyQueryResult(props) {
 
   useEffect(() => {
     ResourceService.searchCompetencies(props.query, props.profileId).then(sections => {
-      console.log(sections);
       setSections(sections);
       setLoading(false);
     });
@@ -21,8 +20,34 @@ export default function CompetencyQueryResult(props) {
   }
 
   return (
-    <div className="d-flex flex-column w-100">
-    { sections }
-    </div>
+    <>
+      <div>Résultat pour la recherche "{props.query}"</div>
+      <Accordion>
+      {sections.map(section => {
+        return (
+          <Card key={section.id}>
+            <Card.Header className="w-100">
+              <Accordion.Toggle as={Button} variant="link" eventKey={section.id} className="justify-content-start w-100">
+                {section.title}
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey={section.id}>
+              <Card.Body>
+                <ListGroup>
+                {section.competencies.map(competency => {
+                  return (
+                    <ListGroup.Item action href={"/competency/?competencyId=" + competency.id}>
+                      {competency.title}
+                    </ListGroup.Item>
+                  );
+                })}
+                </ListGroup>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        );
+      })}
+      </Accordion>
+    </>
   );
 }

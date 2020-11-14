@@ -44,12 +44,14 @@ export default function SearchCompetencyBar(props) {
         </ListGroup.Item>
         {display && 
           <>
-            <ListGroup.Item action
-              href={"/competency/search/?query=" + searchQuery + ((user) ? ("&profileId=" + user.id) : "")}
-              className="small d-flex justify-content-between">
-                <div>Rechercher {searchQuery} dans mes compétences</div>
-                <BsArrowReturnLeft />
-            </ListGroup.Item>
+            {user &&
+              <ListGroup.Item action
+                href={"/competency/search/?query=" + searchQuery + "&profileId=" + user.id}
+                className="small d-flex justify-content-between">
+                  <div>Rechercher {searchQuery} dans mes compétences</div>
+                  <BsArrowReturnLeft />
+              </ListGroup.Item>
+            }
             <ListGroup.Item action 
               href={"/competency/search/?query=" + searchQuery}
               className="small d-flex justify-content-between">

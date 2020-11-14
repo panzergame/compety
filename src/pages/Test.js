@@ -3,6 +3,6 @@ import { LoremIpsum } from 'react-lorem-ipsum';
 
 export default function Test() {
   return (
-    <LoremIpsum p={20} />
+    <LoremIpsum p={2}/>
   );
 }

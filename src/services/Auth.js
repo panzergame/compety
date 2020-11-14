@@ -57,7 +57,12 @@ class AuthService {
   }
   
   get headers() {
-    return {'x-access-token': this.token}
+    if (this.token) {
+      return {'x-access-token': this.token}
+    }
+    else {
+      return {};
+    }
   }
 }
 

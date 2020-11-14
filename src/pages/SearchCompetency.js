@@ -1,6 +1,5 @@
 import React from 'react'
 import { useLocation } from "react-router-dom";
-import Bloc from '../components/Bloc.js'
 import SearchCompetencyBar from '../components/SearchCompetencyBar.js'
 import CompetencyQueryResult from '../components/CompetencyQueryResult.js'
 
@@ -16,7 +15,9 @@ export default function SearchCompetencyPage(props) {
   return (
     <>
       <SearchCompetencyBar />
-      <CompetencyQueryResult query={query} profileId={profileId}/>
+      {query &&
+        <CompetencyQueryResult query={query} profileId={profileId}/>
+      }
     </>
   );
 }

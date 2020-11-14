@@ -10,16 +10,16 @@ export default function ProfileName() {
   if (user) {
     return (
       <Navbar.Collapse className="justify-content-end">
-          <Nav.Link href="profile">{user.firstname + ' ' + user.lastname}</Nav.Link>
-          <Nav.Link href="notifications"><BsFillBellFill /></Nav.Link>
-          <Nav.Link href="messages"><BsFillChatDotsFill /></Nav.Link>
+          <Nav.Link href="/profile">{user.firstname + ' ' + user.lastname}</Nav.Link>
+          <Nav.Link href="/notifications"><BsFillBellFill /></Nav.Link>
+          <Nav.Link href="/messages"><BsFillChatDotsFill /></Nav.Link>
       </Navbar.Collapse>
     );
   }
   else {
     return (
       <Navbar.Collapse className="justify-content-end">
-        <Nav.Link href="login">Se connecter</Nav.Link>
+        <Nav.Link href="/login">Se connecter</Nav.Link>
       </Navbar.Collapse>
     );
   }
