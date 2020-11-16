@@ -8,22 +8,29 @@ import AuthService from '../services/Auth.js';
 export default function Competency(props) {
   const [isLoading, setLoading] = useState(true);
   const [competency, setCompetency] = useState();
+  const user = AuthService.user;
 
   useEffect(() => {
-    ResourceService.competency(props.id).then(competency => {
+    if (competency) {
       console.log(competency);
+    }
+  }, [competency]);
+  
+  useEffect(() => {
+    ResourceService.competency(props.id).then(competency => {
       setCompetency(competency);
       setLoading(false);
     });
   }, [props.id]);
   
-  function onClick(e) {
-    UserService.validateCompetency(competency.id).then(item => {
-      console.log(item);
-    })
+  function validate(e) {
+    UserService.validateCompetency(competency.id).then(setCompetency);
   }
 
-  const user = AuthService.user;
+  function remove(e) {
+    UserService.removeCompetency(competency.id).then(setCompetency);
+  }
+
 
   if (isLoading) {
     return <div>Chargement... {props.id}</div>;
@@ -34,8 +41,11 @@ export default function Competency(props) {
       <Card.Title className="d-flex justify-content-center w-100">{ competency.title }</Card.Title>
       <Card.Body className="d-flex flex-column">
         <Card.Text className="mb-auto">{ competency.description }</Card.Text>
-        {user && 
-          <Button onClick={onClick}>Ajouter à mes compétences</Button>
+        {user && competency.validated &&
+          <Button onClick={remove}>Retirer de mes competences</Button>
+        }
+        {user && !competency.validated &&
+          <Button onClick={validate}>Ajouter mes competences</Button>          
         }
       </Card.Body>
     </Card>

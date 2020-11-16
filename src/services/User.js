@@ -12,6 +12,13 @@ class UserService {
         return response.data;
       });
   }
+
+  removeCompetency(competencyId) {
+    return axios.post(URL + "removeCompetency", {headers: AuthService.headers, params: {competencyId}})
+      .then(response => {
+        return response.data;
+      });
+  }
 }
 
 export default new UserService();
