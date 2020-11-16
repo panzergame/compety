@@ -19,7 +19,7 @@ export default function RegisterPage() {
 
   return (
     <div className="w-100 h-100 d-flex align-items-center justify-content-center">
-      <Form onSubmit={onSubmit} className="d-flex flex-column">
+      <Form onSubmit={onSubmit} className="d-flex flex-column m-auto">
         <Form.Group>
           <Form.Label>Adresse email</Form.Label>
           <Form.Control required type="email" placeholder="Entrez votre adresse email" onChange={(e) => setEmail(e.target.value) }/>

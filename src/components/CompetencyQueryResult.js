@@ -26,11 +26,9 @@ export default function CompetencyQueryResult(props) {
       {sections.map(section => {
         return (
           <Card key={section.id}>
-            <Card.Header className="w-100">
-              <Accordion.Toggle as={Button} variant="link" eventKey={section.id} className="justify-content-start w-100">
-                {section.title}
-              </Accordion.Toggle>
-            </Card.Header>
+            <Accordion.Toggle className="w-100" as={Card.Header} variant="link" eventKey={section.id} className="justify-content-start w-100">
+              {section.title}
+            </Accordion.Toggle>
             <Accordion.Collapse eventKey={section.id}>
               <Card.Body>
                 <ListGroup>
