@@ -28,7 +28,7 @@ export default function LoginPage() {
         <Button variant="primary" type="submit">
           Connexion
         </Button>
-        <a href="register" className="small">Pas encore inscrit ?</a>
+        <a href="/register" className="small">Pas encore inscrit ?</a>
       </Form>
     </div>
   );

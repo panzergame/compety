@@ -22,14 +22,15 @@ class AuthService {
       });
   }
 
-  register(login, firstname, lastname, dayofbirth, password) {
+  register(login, firstname, lastname, dayofbirth, password, role) {
     console.log(login, dayofbirth, password)
     return axios.post(URL + 'register', {
         login,
         firstname,
         lastname,
         dayofbirth,
-        password
+        password,
+        role
       })
       .then(response => {
           if (response.data.token) {
@@ -42,7 +43,7 @@ class AuthService {
       });
   }
 
-  logout(login, password) {
+  logout() {
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     console.log('Unlogged');

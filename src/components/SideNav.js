@@ -25,11 +25,13 @@ export default function SideNav(props) {
         onSetOpen={setSidebarOpen}
         styles={{ sidebar: { background: "white", position: "fixed" } }}
       >
+      {!sidebarOpen &&
         <div className="d-flex side-bar-zone position-fixed">
           <Swipeable className="d-flex align-self-center side-bar-button" onSwipedRight={ (event) => { setSidebarOpen(true) } } >
             <BsChevronCompactRight className="side-bar-button" size={32}/>
           </Swipeable>
         </div>
+      }
         {props.children}
       </Sidebar>
   )
