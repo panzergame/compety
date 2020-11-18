@@ -10,3 +10,9 @@
 body > #root {
   height: 100vh;
 }
+
+/*  https://stackoverflow.com/questions/34365271/hr-inside-container-with-display-flex-become-corrupted */
+hr {
+  margin-left: 0;
+  margin-right: 0;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BsFillPersonCheckFill, BsBuilding, BsGraphUp, BsChevronCompactRight } from 'react-icons/bs';
+import { BsFillPersonCheckFill, BsBuilding, BsGraphUp, BsChevronCompactRight, BsSearch, BsPeopleFill} from 'react-icons/bs';
 
 import { Nav } from 'react-bootstrap'
 import { Swipeable } from 'react-swipeable'
@@ -13,9 +13,9 @@ export default function SideNav(props) {
         sidebar={
           <div className="d-flex h-100">
           <Nav navbar className="d-flex flex-column align-self-center">
-              <Nav.Link href="competency"><BsFillPersonCheckFill /></Nav.Link>
-              <Nav.Link href="company"><BsBuilding /></Nav.Link>
-              <Nav.Link href="stats"><BsGraphUp /></Nav.Link>
+              <Nav.Link href="/profile/competency/"><BsFillPersonCheckFill /></Nav.Link>
+              <Nav.Link href="/competency/search/"><BsSearch /></Nav.Link>
+              <Nav.Link href="/profile/group"><BsPeopleFill /></Nav.Link>
           </Nav>
           </div>
         }

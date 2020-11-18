@@ -19,6 +19,7 @@ export default function CompetencyQueryResult(props) {
     return <div>Chargement...</div>;
   }
 
+  // TODO composant partagé
   return (
     <>
       <div>Résultat pour la recherche "{props.query}"</div>
@@ -34,7 +35,7 @@ export default function CompetencyQueryResult(props) {
                 <ListGroup>
                 {section.competencies.map(competency => {
                   return (
-                    <ListGroup.Item action href={"/competency/?competencyId=" + competency.id}>
+                    <ListGroup.Item key={competency.id} action href={"/competency/?competencyId=" + competency.id}>
                       {competency.title}
                     </ListGroup.Item>
                   );

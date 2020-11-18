@@ -11,12 +11,6 @@ export default function Competency(props) {
   const user = AuthService.user;
 
   useEffect(() => {
-    if (competency) {
-      console.log(competency);
-    }
-  }, [competency]);
-  
-  useEffect(() => {
     ResourceService.competency(props.id).then(competency => {
       setCompetency(competency);
       setLoading(false);
@@ -24,11 +18,11 @@ export default function Competency(props) {
   }, [props.id]);
   
   function validate(e) {
-    UserService.validateCompetency(competency.id).then(setCompetency);
+    UserService.validateCompetency(competency).then(setCompetency);
   }
 
   function remove(e) {
-    UserService.removeCompetency(competency.id).then(setCompetency);
+    UserService.removeCompetency(competency).then(setCompetency);
   }
 
 

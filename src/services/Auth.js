@@ -5,26 +5,37 @@ const URL = 'http://localhost:3001/api/auth/';
 
 // Service de connexion/deconnexion enregistrant le token et l'utilisateur courant'
 class AuthService {
+  post(url, params) {
+    return axios.post(url, Object.assign({headers: AuthService.headers}, params)).then(response => {
+      return response.data;
+    })
+  }
+
+  get(url, params) {
+    return axios.get(url, {headers: AuthService.headers, params: params}).then(response => {
+      return response.data;
+    })
+  }  
+
   login(login, password) {
-    return axios
-      .post(URL + 'login', {
+    return this.post(URL + 'login', {
         login,
         password
       })
       .then(response => {
-        if (response.data.token) {
+        if (response.token) {
           console.log('Logged');
-          sessionStorage.setItem('token', response.data.token);
-          sessionStorage.setItem('user', JSON.stringify(response.data.user));
+          sessionStorage.setItem('token', response.token);
+          sessionStorage.setItem('user', JSON.stringify(response.user));
         }
 
-        return response.data;
+        return response;
       });
   }
 
   register(login, firstname, lastname, dayofbirth, password, role) {
     console.log(login, dayofbirth, password)
-    return axios.post(URL + 'register', {
+    return this.post(URL + 'register', {
         login,
         firstname,
         lastname,
@@ -33,13 +44,13 @@ class AuthService {
         role
       })
       .then(response => {
-          if (response.data.token) {
+          if (response.token) {
             console.log('Logged');
-            sessionStorage.setItem('token', response.data.token);
-            sessionStorage.setItem('user', JSON.stringify(response.data.user));
+            sessionStorage.setItem('token', response.token);
+            sessionStorage.setItem('user', JSON.stringify(response.user));
           }
 
-          return response.data;
+          return response;
       });
   }
 

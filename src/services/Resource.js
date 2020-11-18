@@ -7,17 +7,19 @@ const URL = 'http://192.168.1.37:3001/api/resource/';
 
 class ResourceService {
   competency(id) {
-    return axios.get(URL + "competency/", {headers: AuthService.headers, params: {id}})
-      .then(response => {
-        return response.data;
-      });
+    return AuthService.get(URL + "competency/", {id});
   }
 
   searchCompetencies(query, profileId) {
-    return axios.get(URL + "competency/search/", {headers: AuthService.headers, params: {query, profileId}})
-      .then(response => {
-        return response.data;
-      });
+    return AuthService.get(URL + "competency/search/", {query, profileId});
+  }
+  
+  group(id) {
+    return AuthService.get(URL + "group/", {id});
+  }
+
+  searchUsers(query) {
+    return AuthService.get(URL + "user/search/", {query});
   }
 }
 
