@@ -15,7 +15,7 @@ export default function ProfileNotificationsPage() {
   const user = AuthService.user;
 
   useEffect(() => {
-    ResourceService.notifications(user).then(notifications => {
+    ResourceService.userNotifications(user).then(notifications => {
       setNotifications(notifications);
       setLoading(false);
     });

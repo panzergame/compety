@@ -12,6 +12,7 @@ import GroupCreatePage from './pages/GroupCreate.js';
 import ProfilePage from './pages/Profile.js';
 import ProfileCompetenciesPage from './pages/ProfileCompetencies.js';
 import ProfileNotificationsPage from './pages/ProfileNotifications.js';
+import ProfileGroupsPage from './pages/ProfileGroups.js';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -38,6 +39,7 @@ function App() {
         
         <Route path="/profile/notifications"><NavWrapper><ProfileNotificationsPage /></NavWrapper></Route>
         <Route path="/profile/competencies"><NavWrapper><ProfileCompetenciesPage /></NavWrapper></Route>
+        <Route path="/profile/groups"><NavWrapper><ProfileGroupsPage /></NavWrapper></Route>
         <Route path="/profile/messages"><NavWrapper><Test /></NavWrapper></Route>
         <Route path="/profile"><NavWrapper><ProfilePage /></NavWrapper></Route>
       </Switch>

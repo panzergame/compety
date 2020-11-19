@@ -1,10 +1,12 @@
 .side-bar-zone {
   height: 100%;
   z-index: 10;
+  pointer-events: none;
 }
 
 .side-bar-button {
   margin: 50px 10px 50px 0px;
+  pointer-events: all;
 }
 
 body > #root {
