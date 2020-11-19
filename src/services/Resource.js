@@ -18,6 +18,10 @@ class ResourceService {
     return AuthService.get(URL + "group/", {id});
   }
 
+  notifications(user) {
+    return AuthService.get(URL + 'user/notification/');
+  }
+
   searchUsers(query) {
     return AuthService.get(URL + "user/search/", {query});
   }

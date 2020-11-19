@@ -36,10 +36,10 @@ function App() {
         <Route path="/company/search/:query?"><NavWrapper><SearchCompetencyPage /></NavWrapper></Route>
         <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>     
         
-        <Route path="/profile"><NavWrapper><ProfilePage /></NavWrapper></Route>
         <Route path="/profile/notifications"><NavWrapper><ProfileNotificationsPage /></NavWrapper></Route>
         <Route path="/profile/competencies"><NavWrapper><ProfileCompetenciesPage /></NavWrapper></Route>
         <Route path="/profile/messages"><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/profile"><NavWrapper><ProfilePage /></NavWrapper></Route>
       </Switch>
     </Router>
   );

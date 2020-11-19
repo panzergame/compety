@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react'
 import { FormControl, InputGroup, Button, ListGroup } from 'react-bootstrap';
 import { BsSearch, BsPersonPlusFill, BsX } from 'react-icons/bs';
 import ResourceService from '../services/Resource.js';
+import GroupService from '../services/Group.js';
 
 export default function AddUserGroup(props) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,9 +13,8 @@ export default function AddUserGroup(props) {
 
   useEffect(() => {
     ResourceService.searchUsers(searchQuery).then(users => {
-      const filteredUsers = users.filter(user => {
-        return !(user in group);
-      });
+      const membersId = group.members.map(user => user.id);
+      const filteredUsers = users.filter(user => !membersId.includes(user.id));
       setUsers(filteredUsers);
     });
   }, [searchQuery]);
@@ -33,16 +33,19 @@ export default function AddUserGroup(props) {
   function onClose() {
     setDisplay(false);
   }
+  
+  function inviteUser(user) {
+    props.onInvite(user);
+  }
 
   useEffect(() => {}, [searchQuery, display]);
   
   return (
     <div className="d-flex align-items-center">
-      <BsPersonPlusFill className="mr-3"/>
       <ListGroup onFocus={onFocus} className="w-100">
         <ListGroup.Item className="p-0">
           <InputGroup>
-            <FormControl type="text" placeholder="Ajouter un utilisateur" onChange={queryChanged} />
+            <FormControl type="text" placeholder="Inviter un utilisateur" onChange={queryChanged} />
             {display &&
               <InputGroup.Append>
                 <Button variant="outline-secondary" onClick={onClose}><BsX /></Button>
@@ -52,8 +55,11 @@ export default function AddUserGroup(props) {
         </ListGroup.Item>
         {display && users.map((user) => {
             return (<ListGroup.Item key={user.id}
-                className="small d-flex justify-content-between">
+                className="d-flex justify-content-between p-0 align-items-center">
                   <div>{user.firstname + " " + user.lastname}</div>
+                  <Button onClick={() => inviteUser(user)}>
+                    <BsPersonPlusFill />
+                  </Button>
               </ListGroup.Item>);
         })}
       </ListGroup>

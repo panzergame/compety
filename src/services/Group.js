@@ -14,8 +14,8 @@ class GroupService {
     return AuthService.post(URL + 'removeUser', {userId: user.id, groupId: group.id});
   }
 
-  inviteUser(group, user) {
-    return AuthService.post(URL + 'inviteUser', {userId: user.id, groupId: group.id});
+  invite(group, user) {
+    return AuthService.post(URL + 'invite', {userId: user.id, groupId: group.id});
   }
 
   acceptInvite(group) {

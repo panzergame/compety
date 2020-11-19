@@ -9,7 +9,7 @@ export default function LoginPage() {
   function onSubmit(e) {
     e.preventDefault();
     AuthService.login(email, password).then(() => {
-      window.location.href = '/'
+      window.location.href = '/'; // TODO verifier si erreur
     });
   }
   

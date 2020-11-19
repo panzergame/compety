@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import { Button, Card, ListGroup, Dropdown } from 'react-bootstrap';
-import { BsSearch, BsArrowReturnLeft, BsX, BsList, BsPeopleFill, BsPersonDashFill } from 'react-icons/bs';
+import { BsSearch, BsArrowReturnLeft, BsX, BsList, BsPeopleFill, BsPersonDashFill, BsPersonPlusFill } from 'react-icons/bs';
 import ResourceService from '../services/Resource.js';
 import AuthService from '../services/Auth.js';
 import GroupService from '../services/Group.js';
@@ -23,6 +23,12 @@ export default function Group(props) {
     console.log("remove");
     GroupService.removeUser(group, user).then(setGroup);
   }
+  
+  function onInvite(user) {
+    GroupService.invite(group, user).then(() => 
+      ResourceService.group(props.id).then(setGroup)
+    );
+  }
 
   if (isLoading) {
     return <div>Chargement... {props.id}</div>;
@@ -42,30 +48,49 @@ export default function Group(props) {
         
         <hr />
 
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center my-3">
           <BsPeopleFill className="mr-3"/>
-          <ListGroup className="w-100">
-          {group.members.map(user => {
-            return (
-              <ListGroup.Item className="d-flex align-items-center p-1" key={user.id}>
-                <div className="mr-auto">{user.firstname + " " + user.lastname}</div>
-                <Dropdown>
-                  <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
-                  </Dropdown.Toggle>
-                  
-                  <Dropdown.Menu>
-                    <Dropdown.Item onClick={removeUser}>
-                      <BsPersonDashFill className="mr-3"/>
-                      <span>Retirer</span>
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </ListGroup.Item>
-            );
-          })}
-          </ListGroup>
+          <div>Membres</div>
         </div>
-        <AddUserGroup group={group}/>
+
+        <ListGroup>
+        {group.members.map(user => {
+          return (
+            <ListGroup.Item className="d-flex align-items-center" key={user.id}>
+              <div className="mr-auto">{user.firstname + " " + user.lastname}</div>
+              <Dropdown>
+                <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
+                </Dropdown.Toggle>
+                
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={removeUser}>
+                    <BsPersonDashFill className="mr-3"/>
+                    <span>Retirer</span>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </ListGroup.Item>
+          );
+        })}
+        </ListGroup>
+
+        <hr />
+        
+        <div className="d-flex align-items-center my-3">
+          <BsPersonPlusFill className="mr-3"/>
+          <div>Invitations</div>
+        </div>
+  
+        <ListGroup>
+        {group.invits.map(user => {
+          return (
+            <ListGroup.Item className="d-flex align-items-center" key={user.id}>
+              <div className="mr-auto">{user.firstname + " " + user.lastname}</div>
+            </ListGroup.Item>
+          );
+        })}
+        </ListGroup>
+        <AddUserGroup group={group} onInvite={onInvite}/>
       </Card.Body>
     </Card>
   );

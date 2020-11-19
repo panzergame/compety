@@ -25,7 +25,6 @@ export default function Competency(props) {
     UserService.removeCompetency(competency).then(setCompetency);
   }
 
-
   if (isLoading) {
     return <div>Chargement... {props.id}</div>;
   }

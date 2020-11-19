@@ -6,13 +6,13 @@ const URL = 'http://localhost:3001/api/auth/';
 // Service de connexion/deconnexion enregistrant le token et l'utilisateur courant'
 class AuthService {
   post(url, params) {
-    return axios.post(url, Object.assign({headers: AuthService.headers}, params)).then(response => {
+    return axios.post(url, Object.assign({headers: this.headers}, params)).then(response => {
       return response.data;
     })
   }
 
   get(url, params) {
-    return axios.get(url, {headers: AuthService.headers, params: params}).then(response => {
+    return axios.get(url, {headers: this.headers, params: params}).then(response => {
       return response.data;
     })
   }  
