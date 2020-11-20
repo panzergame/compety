@@ -1,25 +1,27 @@
 import React from 'react'
-import { Accordion, Card, Button } from 'react-bootstrap'
+import { Accordion, Card, Button, ListGroup } from 'react-bootstrap'
 
 export default function Section(props) {
-
-  const id = props.id;
-  // TODO fetch
-  const name = "blabla bloc";
-  const competenciesId = [1, 4, 7];
+  const section = props.section;
 
   return (
-    <Accordion defaultActiveKey="0">
-      <Card>
-        <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-        {name}
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="0">
-          <Card.Body>
-            // TODO faire des liens vers un carousel avec touch=true pour activer le slide
-          </Card.Body>
-        </Accordion.Collapse>
-      </Card>
-    </Accordion>
+    <Card>
+      <Accordion.Toggle className="w-100" as={Card.Header} variant="link" eventKey={section.id} className="justify-content-start w-100">
+        {section.title}
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey={section.id}>
+        <Card.Body>
+          <ListGroup>
+          {section.competencies.map(competency => {
+            return (
+              <ListGroup.Item key={competency.id} action href={"/competency/?competencyId=" + competency.id}>
+                {competency.title}
+              </ListGroup.Item>
+            );
+          })}
+          </ListGroup>
+        </Card.Body>
+      </Accordion.Collapse>
+    </Card>
   );
 }

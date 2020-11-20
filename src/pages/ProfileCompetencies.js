@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
-import { ListGroup, Card } from 'react-bootstrap';
+import { Accordion } from 'react-bootstrap';
 
 import AuthService from '../services/Auth.js';
 import ResourceService from '../services/Resource.js';
 
+import Section from '../components/Section.js';
+
 export default function ProfileCompetenciesPage() {
   const [isLoading, setLoading] = useState(true);
-  const [competencies, setCompetencies] = useState([]);
+  const [sections, setSections] = useState();
 
   const user = AuthService.user;
 
   useEffect(() => {
-    ResourceService.userCompetencies(user).then(competencies => {
-      setCompetencies(competencies);
+    ResourceService.userCompetencies(user).then(sections => {
+      setSections(sections);
+      console.log(sections);
       setLoading(false);
     });
   }, []);
@@ -24,17 +27,13 @@ export default function ProfileCompetenciesPage() {
   }  
 
   return (
-      <ListGroup>
-        {competencies.map(competency => {
-          return (
-            <ListGroup.Item as={Card} key={competency.id}>
-              <Card.Body>
-                <Card.Title>{competency.title}</Card.Title>
-                <Card.Link href={'/competency?competencyId=' + competency.id}>Détails</Card.Link>
-              </Card.Body>
-            </ListGroup.Item>
-          );
+    <>
+      <div>Mes compétences</div>
+      <Accordion>
+        {sections.map(section => {
+          return (<Section section={section} key={section.id}/>);
         })}
-      </ListGroup>
+      </Accordion>
+    </>
   );
 }

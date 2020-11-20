@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react'
 import { Accordion, Card, Button, ListGroup } from 'react-bootstrap';
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
+import Section from './Section.js';
 
 
 export default function CompetencyQueryResult(props) {
@@ -19,32 +20,12 @@ export default function CompetencyQueryResult(props) {
     return <div>Chargement...</div>;
   }
 
-  // TODO composant partagé
   return (
     <>
       <div>Résultat pour la recherche "{props.query}"</div>
       <Accordion>
       {sections.map(section => {
-        return (
-          <Card key={section.id}>
-            <Accordion.Toggle className="w-100" as={Card.Header} variant="link" eventKey={section.id} className="justify-content-start w-100">
-              {section.title}
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey={section.id}>
-              <Card.Body>
-                <ListGroup>
-                {section.competencies.map(competency => {
-                  return (
-                    <ListGroup.Item key={competency.id} action href={"/competency/?competencyId=" + competency.id}>
-                      {competency.title}
-                    </ListGroup.Item>
-                  );
-                })}
-                </ListGroup>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        );
+        return (<Section section={section} key={section.id} />);
       })}
       </Accordion>
     </>
