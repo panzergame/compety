@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import { Button, Card, ListGroup, Dropdown } from 'react-bootstrap';
-import { BsSearch, BsArrowReturnLeft, BsX, BsList, BsPeopleFill, BsPersonDashFill, BsPersonPlusFill } from 'react-icons/bs';
+import { BsSearch, BsArrowReturnLeft, BsX, BsList, BsPeopleFill, BsPersonDashFill, BsPersonPlusFill, BsFillPersonCheckFill } from 'react-icons/bs';
 import ResourceService from '../services/Resource.js';
 import AuthService from '../services/Auth.js';
 import GroupService from '../services/Group.js';
@@ -75,22 +75,34 @@ export default function Group(props) {
         </ListGroup>
 
         <hr />
+        {user.id == group.creator &&
+          <div>
+            <div>
+              <div className="d-flex align-items-center my-3">
+                <BsPersonPlusFill className="mr-3"/>
+                <div>Invitations</div>
+              </div>
         
-        <div className="d-flex align-items-center my-3">
-          <BsPersonPlusFill className="mr-3"/>
-          <div>Invitations</div>
-        </div>
-  
-        <ListGroup>
-        {group.invits.map(user => {
-          return (
-            <ListGroup.Item className="d-flex align-items-center" key={user.id}>
-              <div className="mr-auto">{user.firstname + " " + user.lastname}</div>
-            </ListGroup.Item>
-          );
-        })}
-        </ListGroup>
-        <AddUserGroup group={group} onInvite={onInvite}/>
+              <ListGroup>
+              {group.invits.map(user => {
+                return (
+                  <ListGroup.Item className="d-flex align-items-center" key={user.id}>
+                    <div className="mr-auto">{user.firstname + " " + user.lastname}</div>
+                  </ListGroup.Item>
+                );
+              })}
+              </ListGroup>
+              <AddUserGroup group={group} onInvite={onInvite}/>
+            </div>
+
+            <div>
+              <Button href={'/group/verify?groupId=' + group.id} className="d-flex align-items-center my-3">
+                <BsFillPersonCheckFill className="mr-3"/>
+                <div>Vérifier des compétences</div>
+              </Button>
+            </div>
+          </div>
+        }
       </Card.Body>
     </Card>
   );

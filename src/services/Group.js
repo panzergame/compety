@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import AuthService from './Auth.js';
 
-const URL = 'http://192.168.1.37:3001/api/action/group/';
+const URL = 'https://compety.com:3001/api/action/group/';
 
 class GroupService {
   create(title, description) {
@@ -11,15 +11,15 @@ class GroupService {
   }
   
   removeUser(group, user) {
-    return AuthService.post(URL + 'removeUser', {userId: user.id, groupId: group.id});
+    return AuthService.post(URL + 'user/remove', {userId: user.id, groupId: group.id});
   }
 
   invite(group, user) {
-    return AuthService.post(URL + 'invite', {userId: user.id, groupId: group.id});
+    return AuthService.post(URL + 'invite/create', {userId: user.id, groupId: group.id});
   }
 
   acceptInvite(group) {
-    return AuthService.post(URL + 'acceptInvite', {groupId: group.id});
+    return AuthService.post(URL + 'invite/accept', {groupId: group.id});
   }
 }
 

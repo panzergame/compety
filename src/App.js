@@ -5,10 +5,13 @@ import NavWrapper from './components/NavWrapper.js';
 import Test from './pages/Test.js';
 import SearchCompetencyPage from './pages/SearchCompetency.js';
 import CompetencyPage from './pages/Competency.js';
+import ValidateCompetencyPage from './pages/ValidateCompetency.js';
+import VerifyCompetencyPage from './pages/VerifyCompetency.js';
 import LoginPage from './pages/Login.js';
 import RegisterPage from './pages/Register.js';
 import GroupPage from './pages/Group.js';
 import GroupCreatePage from './pages/GroupCreate.js';
+import GroupVerifyCompetenciesPage from './pages/GroupVerifyCompetencies.js';
 import ProfilePage from './pages/Profile.js';
 import ProfileCompetenciesPage from './pages/ProfileCompetencies.js';
 import ProfileNotificationsPage from './pages/ProfileNotifications.js';
@@ -29,9 +32,12 @@ function App() {
         <Route path="/register" exact><RegisterPage /></Route>
 
         <Route path="/group/create/"><NavWrapper><GroupCreatePage /></NavWrapper></Route>
+        <Route path="/group/verify/"><NavWrapper><GroupVerifyCompetenciesPage /></NavWrapper></Route>
         <Route path="/group/"><NavWrapper><GroupPage /></NavWrapper></Route>
 
         <Route path="/competency/search/"><NavWrapper><SearchCompetencyPage /></NavWrapper></Route>
+        <Route path="/competency/validate"><NavWrapper><ValidateCompetencyPage /></NavWrapper></Route>
+        <Route path="/competency/verify"><NavWrapper><VerifyCompetencyPage /></NavWrapper></Route>
         <Route path="/competency/"><NavWrapper><CompetencyPage /></NavWrapper></Route>
         
         <Route path="/company/search/:query?"><NavWrapper><SearchCompetencyPage /></NavWrapper></Route>

@@ -10,7 +10,7 @@ export default function LoginPage() {
     e.preventDefault();
     AuthService.login(email, password).then(() => {
       window.location.href = '/'; // TODO verifier si erreur
-    });
+    }).catch(error => console.log(error));
   }
   
   return (

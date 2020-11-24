@@ -3,11 +3,19 @@ import axios from 'axios';
 
 import AuthService from './Auth.js';
 
-const URL = 'http://192.168.1.37:3001/api/resource/';
+const URL = 'https://compety.com:3001/api/resource/';
 
 class ResourceService {
   competency(id) {
     return AuthService.get(URL + "competency/", {id});
+  }
+
+  competencyValidatedFile(competencyId) {
+    return AuthService.get(URL + "competency/validated/file", {competencyId});
+  }
+
+  competencyValidatedPhoto(competencyId) {
+    return AuthService.get(URL + "competency/validated/photo", {competencyId});
   }
 
   searchCompetencies(query, profileId) {
@@ -16,6 +24,10 @@ class ResourceService {
   
   group(id) {
     return AuthService.get(URL + "group/", {id});
+  }
+  
+  groupComptenciesToVerify(groupId) {
+    return AuthService.get(URL + "group/competency/verify", {groupId});
   }
 
   userNotifications(user) {

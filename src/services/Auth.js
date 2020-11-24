@@ -1,12 +1,20 @@
 import React from 'react'
 import axios from 'axios';
 
-const URL = 'http://localhost:3001/api/auth/';
+const URL = 'https://compety.com:3001/api/auth/';
 
 // Service de connexion/deconnexion enregistrant le token et l'utilisateur courant'
 class AuthService {
   post(url, params) {
     return axios.post(url, Object.assign({headers: this.headers}, params)).then(response => {
+      return response.data;
+    })
+  }
+
+  postForm(url, formData, params) {
+    const headers = Object.assign({'Content-Type': 'multipart/form-data' }, this.headers);
+//     console.log({headers, params});
+    return axios.post(url, formData, {headers, params}).then(response => {
       return response.data;
     })
   }
@@ -69,6 +77,15 @@ class AuthService {
   }
   
   get headers() {
+    if (this.token) {
+      return {'x-access-token': this.token}
+    }
+    else {
+      return {};
+    }
+  }
+
+  get formHeaders() {
     if (this.token) {
       return {'x-access-token': this.token}
     }

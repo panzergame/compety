@@ -16,10 +16,6 @@ export default function Competency(props) {
       setLoading(false);
     });
   }, [props.id]);
-  
-  function validate(e) {
-    UserService.validateCompetency(competency).then(setCompetency);
-  }
 
   function remove(e) {
     UserService.removeCompetency(competency).then(setCompetency);
@@ -38,7 +34,7 @@ export default function Competency(props) {
           <Button onClick={remove}>Retirer de mes competences</Button>
         }
         {user && !competency.validated &&
-          <Button onClick={validate}>Ajouter mes competences</Button>          
+          <Button href={'/competency/validate/?competencyId=' + competency.id} >Ajouter mes competences</Button>          
         }
       </Card.Body>
     </Card>
