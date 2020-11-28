@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import { Button, Card, ListGroup, Dropdown } from 'react-bootstrap';
-import { BsSearch, BsArrowReturnLeft, BsX, BsList, BsPeopleFill, BsPersonDashFill, BsPersonPlusFill, BsFillPersonCheckFill } from 'react-icons/bs';
+import { BsSearch, BsArrowReturnLeft, BsX, BsList, BsPeopleFill, BsPersonDashFill, BsPersonPlusFill, BsFillPersonCheckFill, BsFillPersonLinesFill } from 'react-icons/bs';
 import ResourceService from '../services/Resource.js';
 import AuthService from '../services/Auth.js';
 import GroupService from '../services/Group.js';
@@ -49,7 +49,7 @@ export default function Group(props) {
         <hr />
 
         <div className="d-flex align-items-center my-3">
-          <BsPeopleFill className="mr-3"/>
+          <BsFillPersonLinesFill className="mr-3"/>
           <div>Membres</div>
         </div>
 
@@ -75,7 +75,7 @@ export default function Group(props) {
         </ListGroup>
 
         <hr />
-        {user.id == group.creator &&
+        {user && user.id == group.creator &&
           <div>
             <div>
               <div className="d-flex align-items-center my-3">

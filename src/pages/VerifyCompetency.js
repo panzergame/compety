@@ -16,34 +16,28 @@ function useQuery() {
 
 export default function VerifyCompetencyPage() {
   const [isLoading, setLoading] = useState(true);
-  const [competency, setCompetency] = useState();
+  const [validation, setValidation] = useState();
   const [file, setFile] = useState();
   const [photoUri, setPhotoUri] = useState();
   const [comment, setComment] = useState();
 
   const urlQuery = useQuery();
-  const competencyId = urlQuery.get("competencyId");
-  const userId = urlQuery.get("userId");
+  const validationId = urlQuery.get("validationId");
 
   useEffect(() => {
-    ResourceService.competency(competencyId).then(competency => {
-      setCompetency(competency);
+    ResourceService.competencyValidation(validationId).then(validation => {
+      setValidation(validation);
       setLoading(false);
     });
-  }, [competencyId]);
+  }, [validationId]);
 
-  function validate(e) {
-  }
-  
   function onSubmit(e) {
     e.preventDefault();
     console.log(file);
-
-    UserService.validateCompetency(competency, file, photoUri, comment).then(setCompetency);
   }
 
   if (isLoading) {
-    return <div>Chargement... {competencyId}</div>;
+    return <div>Chargement... {validationId}</div>;
   }
 
   return (
@@ -51,40 +45,22 @@ export default function VerifyCompetencyPage() {
       <Card.Body className="h-100">
         <Card.Title className="d-flex align-items-center">
           <BsCheck className="mr-3"/>
-          <div>Validation de</div>
+          <div>Vérification de</div>
         </Card.Title>
-        <Card.Subtitle>{competency.title}</Card.Subtitle>
+        <Card.Subtitle>{validation.title}</Card.Subtitle>
         <hr />
+
+        <div>Validé par</div>
+        
       
         <Card.Title className="d-flex align-items-center">
             <BsFolderPlus className="mr-3"/>
-            <div>Ajouter une preuve</div>
+            <div>Consulter la preuve</div>
         </Card.Title>
           
         <Form onSubmit={onSubmit} className="d-flex flex-column">
-          <Form.Group>
-            <Form.Label>
-              Ajouter un fichier
-            </Form.Label>
-            <Form.File onChange={e => setFile(e.target.files[0]) }/>
-          </Form.Group>
-          
-          <Form.Group>
-            <Form.Label>
-              Prendre une photo
-            </Form.Label>
-            <Camera onTakePhoto = {dataUri => setPhotoUri(dataUri) }/>
-            </Form.Group>
-
-          <Form.Group>
-            <Form.Label>
-              Commentaire
-            </Form.Label>
-            <Form.Control type="text" placeholder="Entrez un commentaire"
-              onChange={e => setComment(e.target.value) }/>
-          </Form.Group>
           <Button variant="primary" type="submit" className="w-100 mt-auto">
-            Valider
+            Vérifier
           </Button>
         </Form>
           

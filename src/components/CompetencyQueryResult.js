@@ -4,7 +4,6 @@ import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
 import Section from './Section.js';
 
-
 export default function CompetencyQueryResult(props) {
   const [isLoading, setLoading] = useState(true);
   const [sections, setSections] = useState();
@@ -25,7 +24,7 @@ export default function CompetencyQueryResult(props) {
       <div>Résultat pour la recherche "{props.query}"</div>
       <Accordion>
       {sections.map(section => {
-        return (<Section section={section} key={section.id} />);
+        return (<Section section={section} key={section.id}/>);
       })}
       </Accordion>
     </>

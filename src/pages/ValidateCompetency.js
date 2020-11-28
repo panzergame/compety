@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import { useLocation } from "react-router-dom";
-import { Button, Card, Form } from 'react-bootstrap';
+import { Button, Card, Form, Modal } from 'react-bootstrap';
 import { BsFolderPlus, BsCheck } from 'react-icons/bs';
 
 import Camera from 'react-html5-camera-photo';
@@ -20,6 +20,10 @@ export default function ValidateCompetencyPage() {
   const [file, setFile] = useState();
   const [photoUri, setPhotoUri] = useState();
   const [comment, setComment] = useState('');
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const urlQuery = useQuery();
   const competencyId = urlQuery.get("competencyId");
@@ -39,6 +43,7 @@ export default function ValidateCompetencyPage() {
     console.log(file);
 
     UserService.validateCompetency(competency, file, photoUri, comment).then(setCompetency);
+    setShow(true);
   }
 
   if (isLoading) {
@@ -46,6 +51,7 @@ export default function ValidateCompetencyPage() {
   }
 
   return (
+    <>
     <Card className="h-100">
       <Card.Body className="h-100">
         <Card.Title className="d-flex align-items-center">
@@ -89,5 +95,18 @@ export default function ValidateCompetencyPage() {
           
       </Card.Body>
     </Card>
+    
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Competence validé</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Votre compétence sera bientôt vérifiée</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Ok
+        </Button>
+      </Modal.Footer>
+    </Modal>
+    </>
   );
 }

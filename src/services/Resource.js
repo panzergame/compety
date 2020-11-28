@@ -6,16 +6,20 @@ import AuthService from './Auth.js';
 const URL = 'https://compety.com:3001/api/resource/';
 
 class ResourceService {
-  competency(id) {
-    return AuthService.get(URL + "competency/", {id});
+  competency(id, userId) {
+    return AuthService.get(URL + "competency/", {id, userId});
   }
 
-  competencyValidatedFile(competencyId) {
-    return AuthService.get(URL + "competency/validated/file", {competencyId});
+  competencyValidation(validationId) {
+    return AuthService.get(URL + "competency/validation", {validationId});
   }
 
-  competencyValidatedPhoto(competencyId) {
-    return AuthService.get(URL + "competency/validated/photo", {competencyId});
+  competencyValidatedFile(validationId) {
+    return AuthService.get(URL + "competency/validation/file", {validationId});
+  }
+
+  competencyValidatedPhoto(validationId) {
+    return AuthService.get(URL + "competency/validation/photo", {validationId});
   }
 
   searchCompetencies(query, profileId) {
