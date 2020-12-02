@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import { useLocation } from "react-router-dom";
-import { Button, Card, Form } from 'react-bootstrap';
+import { Button, Card, Form, Image } from 'react-bootstrap';
 import { BsFolderPlus, BsCheck } from 'react-icons/bs';
 
 import Camera from 'react-html5-camera-photo';
@@ -50,13 +50,24 @@ export default function VerifyCompetencyPage() {
         <Card.Subtitle>{validation.title}</Card.Subtitle>
         <hr />
 
-        <div>Validé par</div>
+        <Card.Text>Validé par
+          <a href={"/user?userId=" + validation.user}>{validation.firstname + " " + validation.lastname}</a>
+        </Card.Text>
+        <hr />
         
-      
         <Card.Title className="d-flex align-items-center">
             <BsFolderPlus className="mr-3"/>
             <div>Consulter la preuve</div>
         </Card.Title>
+        <Card.Text>
+          {validation.hasfile &&
+            <a href={ResourceService.competencyValidatedFileUrl(validation.id)}>Fichier {validation.fileName}</a>}
+          {validation.hasphoto &&
+            <Image src={ResourceService.competencyValidatedPhotoUrl(validation.id)} fluid/>
+          }
+        </Card.Text>
+        
+        <hr />
           
         <Form onSubmit={onSubmit} className="d-flex flex-column">
           <Button variant="primary" type="submit" className="w-100 mt-auto">

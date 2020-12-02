@@ -14,12 +14,12 @@ class ResourceService {
     return AuthService.get(URL + "competency/validation", {validationId});
   }
 
-  competencyValidatedFile(validationId) {
-    return AuthService.get(URL + "competency/validation/file", {validationId});
+  competencyValidatedFileUrl(validationId) {
+    return URL + "competency/validation/file?validationId=" + validationId;
   }
 
-  competencyValidatedPhoto(validationId) {
-    return AuthService.get(URL + "competency/validation/photo", {validationId});
+  competencyValidatedPhotoUrl(validationId) {
+    return URL + "competency/validation/photo?validationId=" + validationId;
   }
 
   searchCompetencies(query, profileId) {

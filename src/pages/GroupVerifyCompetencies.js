@@ -15,19 +15,19 @@ function useQuery() {
 }
 
 function VerifyCompetencyInline(props) {
-  const validation = props.validation;
+  const competency = props.competency;
   return (
     <div className="d-flex flex-column">
-      <div>{validation.title}</div>
+      <div>{competency.title}</div>
       <hr/>
       <div className="d-flex align-items-center">
-        <Button className="mr-auto" href={"/competency/verify?validationId=" + validation.id}>
+        <Button className="mr-auto" href={"/competency/verify?validationId=" + competency.validation}>
           <BsCheck/>
           Détails
         </Button>
         <div>
           <BsPersonFill />
-          {validation.firstname + " " + validation.lastname}
+          {competency.firstname + " " + competency.lastname}
         </div>
       </div>
     </div>
