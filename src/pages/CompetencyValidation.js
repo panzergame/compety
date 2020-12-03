@@ -7,8 +7,13 @@ import CompetencyValidation from '../components/CompetencyValidation.js';
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
 
-function Revalidate() {
-  return (<></>);
+function Revalidate(props) {
+  return (<>
+    <hr />
+    <Button action href={'/competency/validate?competencyId=' + props.validation.competency}>
+      Valider à nouveau 
+    </Button>
+  </>);
 }
 
 export default function CompetencyValidationPage() {
