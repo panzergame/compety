@@ -15,10 +15,12 @@ export default function Section(props) {
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={section.id}>
         <Card.Body>
-          <ListGroup>
+          <ListGroup variant="flush">
           {section.competencies.map(competency => {
             return (
-              <ListGroup.Item key={competency.id} action href={"/competency/?competencyId=" + competency.id} as={competencyInline} competency={competency}/>
+              <ListGroup.Item key={competency.id}>
+                <Card as={competencyInline} competency={competency}/>
+              </ListGroup.Item>
             );
           })}
           </ListGroup>
