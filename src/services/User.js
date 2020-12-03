@@ -30,12 +30,12 @@ class UserService {
     return AuthService.post(URL + "competency/remove", {competencyId: competency.id});
   }
   
-  acceptValidation(validation) {
-    return AuthService.post(URL + 'competency/validation/accept', {validationId: validation.id});
+  acceptValidation(validationId) {
+    return AuthService.post(URL + 'competency/validation/accept', {validationId});
   }
   
-  commentValidation(validation, comment) {
-    return AuthService.post(URL + 'competency/validation/comment', {validationId: validation.id, comment});
+  commentValidation(validationId, comment) {
+    return AuthService.post(URL + 'competency/validation/comment', {validationId, comment});
   }
 }
 
