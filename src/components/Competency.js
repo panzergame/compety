@@ -1,5 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import { Button, Card } from 'react-bootstrap';
+import { BsCheckAll, BsCheck } from 'react-icons/bs';
+
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
 import AuthService from '../services/Auth.js';
@@ -28,9 +30,33 @@ export default function Competency(props) {
 
   return (
     <Card className="w-100 h-100">
-      <Card.Title className="d-flex justify-content-center w-100">{ competency.title }</Card.Title>
+      <Card.Title className="d-flex justify-content-center w-100">
+        <div className="d-flex align-items-center">
+          <div>{ competency.title }</div>
+          <div>
+            {competency.validated && competency.validated.verification &&
+              <BsCheckAll />
+            }
+            
+            {competency.validated && competency.validated.validation &&
+              <BsCheck />
+            }
+          </div>
+        </div>
+      </Card.Title>
       <Card.Body className="d-flex flex-column">
         <Card.Text className="mb-auto">{ competency.description }</Card.Text>
+        
+        {competency.validated && competency.validated.validation &&
+            <>
+              <hr />
+              <Button href={'/competency/validation?validationId=' + competency.validated.validation}>
+                Détails de la validation
+              </Button>
+              <hr />
+            </>
+        }
+        
         {user && competency.validated &&
           <Button onClick={remove}>Retirer de mes competences</Button>
         }
