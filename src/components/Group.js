@@ -20,14 +20,13 @@ export default function Group(props) {
   }, [props.id]);
 
   function removeUser() {
-    console.log("remove");
-    GroupService.removeUser(group, user).then(setGroup);
+    GroupService.removeUser(group, user).then(
+      ResourceService.group(props.id).then(setGroup));
   }
   
   function onInvite(user) {
-    GroupService.invite(group, user).then(() => 
-      ResourceService.group(props.id).then(setGroup)
-    );
+    GroupService.invite(group, user).then(
+      ResourceService.group(props.id).then(setGroup));
   }
 
   if (isLoading) {

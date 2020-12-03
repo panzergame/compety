@@ -31,12 +31,14 @@ export default function VerifyCompetencyPage() {
 
   function onAccept(e) {
     e.preventDefault();
-    UserService.acceptValidation(validation);
+    UserService.acceptValidation(validation).then(
+      ResourceService.competencyValidation(validationId).then(setValidation));
   }
 
   function onComment(e) {
     e.preventDefault();
-    UserService.commentValidation(validation, comment);
+    UserService.commentValidation(validation, comment).then(
+      ResourceService.competencyValidation(validationId).then(setValidation));
   }
 
   if (isLoading) {

@@ -18,7 +18,8 @@ export default function Competency(props) {
   }, [props.id]);
 
   function remove(e) {
-    UserService.removeCompetency(competency).then(setCompetency);
+    UserService.removeCompetency(competency).then(
+      ResourceService.competency(props.id).then(setCompetency));
   }
 
   if (isLoading) {
