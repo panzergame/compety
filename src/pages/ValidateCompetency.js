@@ -85,7 +85,7 @@ export default function ValidateCompetencyPage() {
             <Form.Label>
               Commentaire
             </Form.Label>
-            <Form.Control type="text" placeholder="Entrez un commentaire"
+            <Form.Control as="textarea" rows="3" placeholder="Entrez un commentaire"
               onChange={e => setComment(e.target.value) }/>
           </Form.Group>
           <Button variant="primary" type="submit" className="w-100 mt-auto">

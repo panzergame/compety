@@ -17,8 +17,6 @@ function useQuery() {
 export default function VerifyCompetencyPage() {
   const [isLoading, setLoading] = useState(true);
   const [validation, setValidation] = useState();
-  const [file, setFile] = useState();
-  const [photoUri, setPhotoUri] = useState();
   const [comment, setComment] = useState();
 
   const urlQuery = useQuery();
@@ -31,9 +29,14 @@ export default function VerifyCompetencyPage() {
     });
   }, [validationId]);
 
-  function onSubmit(e) {
+  function onAccept(e) {
     e.preventDefault();
-    console.log(file);
+    UserService.acceptValidation(validation);
+  }
+
+  function onComment(e) {
+    e.preventDefault();
+    UserService.commentValidation(validation, comment);
   }
 
   if (isLoading) {
@@ -42,16 +45,21 @@ export default function VerifyCompetencyPage() {
 
   return (
     <Card className="h-100">
-      <Card.Body className="h-100">
-        <Card.Title className="d-flex align-items-center">
+      <Card.Body className="d-flex flex-column">
+        <Card.Title className="d-flex align-items-center m-0">
           <BsCheck className="mr-3"/>
-          <div>Vérification de</div>
+          <div>Vérification</div>
         </Card.Title>
         <Card.Subtitle>{validation.title}</Card.Subtitle>
         <hr />
 
-        <Card.Text>Validé par
+        <Card.Text className="m-0">
+          <span className="mr-2">Validée par</span>
           <a href={"/user?userId=" + validation.user}>{validation.firstname + " " + validation.lastname}</a>
+        </Card.Text>
+        
+        <Card.Text className="m-0">
+        {validation.comment}
         </Card.Text>
         <hr />
         
@@ -59,7 +67,7 @@ export default function VerifyCompetencyPage() {
             <BsFolderPlus className="mr-3"/>
             <div>Consulter la preuve</div>
         </Card.Title>
-        <Card.Text>
+        <Card.Text className="m-0">
           {validation.hasfile &&
             <a href={ResourceService.competencyValidatedFileUrl(validation.id)}>Fichier {validation.fileName}</a>}
           {validation.hasphoto &&
@@ -68,12 +76,25 @@ export default function VerifyCompetencyPage() {
         </Card.Text>
         
         <hr />
+
+        <Card.Text className="m-0">
+          <Form onSubmit={onComment} className="d-flex flex-column">
+            <Form.Group className="pt-auto">
+              <Form.Control as="textarea" rows="3" placeholder="Entrez un commentaire"
+                onChange={e => setComment(e.target.value) }/>
+            </Form.Group>
+            <Button variant="primary" type="submit" className="w-100">
+              Commenter
+            </Button>
+          </Form>
           
-        <Form onSubmit={onSubmit} className="d-flex flex-column">
-          <Button variant="primary" type="submit" className="w-100 mt-auto">
-            Vérifier
-          </Button>
-        </Form>
+          <hr />
+          <Form onSubmit={onAccept} className="d-flex flex-column">
+            <Button variant="primary" type="submit" className="w-100">
+              Accepter
+            </Button>
+          </Form>
+        </Card.Text>
           
       </Card.Body>
     </Card>

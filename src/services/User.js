@@ -29,6 +29,14 @@ class UserService {
   removeCompetency(competency) {
     return AuthService.post(URL + "competency/remove", {competencyId: competency.id});
   }
+  
+  acceptValidation(validation) {
+    return AuthService.post(URL + 'competency/validation/accept', {validationId: validation.id});
+  }
+  
+  commentValidation(validation, comment) {
+    return AuthService.post(URL + 'competency/validation/comment', {validationId: validation.id});
+  }
 }
 
 export default new UserService();

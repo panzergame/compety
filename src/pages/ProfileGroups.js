@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
-import { ListGroup, Card } from 'react-bootstrap';
+import { ListGroup, Card, Button } from 'react-bootstrap';
 
 import AuthService from '../services/Auth.js';
 import ResourceService from '../services/Resource.js';
@@ -31,7 +31,9 @@ export default function ProfileGroupPage() {
               <Card.Body>
                 <Card.Title>{group.title}</Card.Title>
                 <Card.Subtitle>{group.description}</Card.Subtitle>
-                <Card.Link href={'/group?groupId=' + group.id}>Détails</Card.Link>
+                <Card.Text>
+                  <Button href={'/group?groupId=' + group.id}>Détails</Button>
+                </Card.Text>
               </Card.Body>
             </ListGroup.Item>
           );

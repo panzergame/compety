@@ -94,6 +94,8 @@ export default function Group(props) {
               </ListGroup>
               <AddUserGroup group={group} onInvite={onInvite}/>
             </div>
+            
+            <hr />
 
             <div>
               <Button href={'/group/verify?groupId=' + group.id} className="d-flex align-items-center my-3">
