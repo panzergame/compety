@@ -35,7 +35,7 @@ class UserService {
   }
   
   commentValidation(validation, comment) {
-    return AuthService.post(URL + 'competency/validation/comment', {validationId: validation.id});
+    return AuthService.post(URL + 'competency/validation/comment', {validationId: validation.id, comment});
   }
 }
 

@@ -4,7 +4,7 @@ import { BsSearch, BsPersonPlusFill, BsX } from 'react-icons/bs';
 import ResourceService from '../services/Resource.js';
 import GroupService from '../services/Group.js';
 
-// Affichage dans basique d'ue competence dans une liste'
+// Affichage dans basique d'une compétence dans une liste'
 
 export default function CompetencyInline(props) {
   const competency = props.competency;
