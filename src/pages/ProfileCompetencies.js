@@ -10,7 +10,7 @@ import BreadCrumbService from '../services/BreadCrumb.js';
 import Section from '../components/Section.js';
 
 export default function ProfileCompetenciesPage() {
-  BreadCrumbService.push(2, 'Mes compétences', '/profile/competences');
+  BreadCrumbService.push(2, 'Mes compétences', '/profile/competencies');
 
   const [isLoading, setLoading] = useState(true);
   const [sections, setSections] = useState();

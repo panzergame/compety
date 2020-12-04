@@ -6,17 +6,20 @@ export default function BreadCrumb() {
   let [path, setPath] = useState([]);
   
   useEffect(() => {
-      setPath(BreadCrumbService.path);
-  }, [BreadCrumbService.path.length]);
+      BreadCrumbService.path.subscribe(path => {
+        console.log(path);
+        setPath(path)
+      });
+  }, [BreadCrumbService]);
   
   if (path.length > 0) {
     return (
       <Breadcrumb>
-        {BreadCrumbService.path.slice(0, -1).map(elem => {
+        {path.slice(0, -1).map(elem => {
           return (<Breadcrumb.Item key={elem.url} href={elem.url}>{elem.name}</Breadcrumb.Item>);
         })}
 
-        <Breadcrumb.Item active>{BreadCrumbService.path[BreadCrumbService.path.length - 1].name}</Breadcrumb.Item>
+        <Breadcrumb.Item active>{path[path.length - 1].name}</Breadcrumb.Item>
       </Breadcrumb>
     );
   }

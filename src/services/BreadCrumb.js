@@ -1,23 +1,28 @@
 import React from 'react'
+import { BehaviorSubject } from 'rxjs';
 
 class BreadCrumbService {
   constructor() {
     const default_path = sessionStorage.getItem('path');
-    this.path = default_path ? JSON.parse(default_path) : [];
+    this.path = new BehaviorSubject(default_path ? JSON.parse(default_path) : []);
   }
   
   push(level, name, url) {
     let i = 0;
-    for (i; i < this.path.length && this.path[i].level < level; ++i) {
+    const oldPath = this.path.getValue();
+    for (i; i < oldPath.length && oldPath[i].level < level; ++i) {
       
     }
     
+    console.log(i);
+    
     // Suppresion des niveaux redondants
-    this.path = this.path.slice(0, i);
+    this.path.next([
+      ...oldPath.slice(0, i),
+      {level, name, url}
+    ]);
     
-    this.path.push({level, name, url});
-    
-    sessionStorage.setItem('path', JSON.stringify(this.path));
+    sessionStorage.setItem('path', JSON.stringify(this.path.getValue()));
   }
 }
 
