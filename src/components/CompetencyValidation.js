@@ -35,7 +35,6 @@ export default function CompetencyValidation(props) {
     });
   }, [validationId]);
   
-
   if (isLoading) {
     return <div>Chargement... {validationId}</div>;
   }
@@ -45,7 +44,7 @@ export default function CompetencyValidation(props) {
       <Card.Body className="d-flex flex-column">
         <Card.Title className="d-flex align-items-center mb-2">
           <BsCheck className="mr-3"/>
-          <div>Validation de</div>
+          <div>Validation</div>
         </Card.Title>
         <Card.Subtitle>
           <a href={'/competency?competencyId=' + validation.competency}>{validation.title}</a>
@@ -57,9 +56,16 @@ export default function CompetencyValidation(props) {
           <a href={"/user?userId=" + validation.user}>{validation.firstname + " " + validation.lastname}</a>
         </div>
         
-        <div className="m-0">
-        {validation.comment}
-        </div>
+        {validation.verificator_firstname &&
+          <div className="m-0">
+            <span className="mr-2">Vérifiée par {validation.verificator_firstname + ' ' + validation.verificator_lastname}</span>
+          </div>
+        }
+        {!validation.verificator_firstname &&
+          <div className="m-0">
+            <span className="mr-2">En attente de vérification</span>
+          </div>
+        }
         <hr />
         
         <Card.Title className="d-flex align-items-center">

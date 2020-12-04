@@ -7,7 +7,7 @@ export default function BreadCrumb() {
   
   useEffect(() => {
       BreadCrumbService.path.subscribe(path => {
-        console.log(path);
+//         console.log(path);
         setPath(path)
       });
   }, [BreadCrumbService]);

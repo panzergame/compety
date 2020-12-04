@@ -14,8 +14,6 @@ class BreadCrumbService {
       
     }
     
-    console.log(i);
-    
     // Suppresion des niveaux redondants
     this.path.next([
       ...oldPath.slice(0, i),
