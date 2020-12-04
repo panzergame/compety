@@ -5,7 +5,7 @@ import { BsCheckAll, BsCheck } from 'react-icons/bs';
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
 import AuthService from '../services/Auth.js';
-
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 export default function Competency(props) {
   const [isLoading, setLoading] = useState(true);
@@ -18,6 +18,12 @@ export default function Competency(props) {
       setLoading(false);
     });
   }, [props.id]);
+
+  useEffect(() => {
+      if (competency) {
+        BreadCrumbService.push(3, competency.title, '/competency?competencyId=' + competency.id);
+      }
+  }, [competency]);
 
   function remove(e) {
     UserService.removeCompetency(competency).then(

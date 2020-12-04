@@ -4,8 +4,11 @@ import { useParams } from "react-router-dom";
 import { Button, Card } from 'react-bootstrap';
 
 import AuthService from '../services/Auth.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 export default function ProfilePage() {
+  BreadCrumbService.push(1, 'Profil', '/profile');
+  
   const user = AuthService.user;
 
   function logout(e) {

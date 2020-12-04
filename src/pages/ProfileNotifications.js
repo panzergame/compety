@@ -5,10 +5,13 @@ import { ListGroup } from 'react-bootstrap';
 
 import AuthService from '../services/Auth.js';
 import ResourceService from '../services/Resource.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 import InviteNotification from '../components/InviteNotification.js';
 
 export default function ProfileNotificationsPage() {
+  BreadCrumbService.push(2, 'Notifications', '/profile/notifications');
+  
   const [isLoading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState([]);
 

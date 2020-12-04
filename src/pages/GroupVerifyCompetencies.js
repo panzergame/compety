@@ -7,6 +7,7 @@ import { Accordion, Button } from 'react-bootstrap';
 
 import AuthService from '../services/Auth.js';
 import ResourceService from '../services/Resource.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 import Section from '../components/Section.js';
 

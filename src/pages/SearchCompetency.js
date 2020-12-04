@@ -1,7 +1,10 @@
 import React from 'react'
 import { useLocation } from "react-router-dom";
+
 import SearchCompetencyBar from '../components/SearchCompetencyBar.js'
 import CompetencyQueryResult from '../components/CompetencyQueryResult.js'
+
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);

@@ -4,6 +4,8 @@ import { BsSearch, BsArrowReturnLeft, BsX, BsList, BsPeopleFill, BsPersonDashFil
 import ResourceService from '../services/Resource.js';
 import AuthService from '../services/Auth.js';
 import GroupService from '../services/Group.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
+
 import AddUserGroup from './AddUserGroup.js';
 
 export default function Group(props) {
@@ -18,6 +20,12 @@ export default function Group(props) {
       setLoading(false);
     });
   }, [props.id]);
+
+  useEffect(() => {
+      if (group) {
+        BreadCrumbService.push(4, group.title, '/group?groupId=' + group.id);
+      }
+  }, [group]);
 
   function removeUser() {
     GroupService.removeUser(group, user).then(

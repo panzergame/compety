@@ -5,10 +5,13 @@ import { Accordion } from 'react-bootstrap';
 
 import AuthService from '../services/Auth.js';
 import ResourceService from '../services/Resource.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 import Section from '../components/Section.js';
 
 export default function ProfileCompetenciesPage() {
+  BreadCrumbService.push(2, 'Mes compétences', '/profile/competences');
+
   const [isLoading, setLoading] = useState(true);
   const [sections, setSections] = useState();
 
@@ -17,7 +20,6 @@ export default function ProfileCompetenciesPage() {
   useEffect(() => {
     ResourceService.userCompetencies(user).then(sections => {
       setSections(sections);
-      console.log(sections);
       setLoading(false);
     });
   }, []);

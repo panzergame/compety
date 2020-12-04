@@ -2,7 +2,7 @@ import React from 'react';
 
 import NavWrapper from './components/NavWrapper.js';
 
-import Test from './pages/Test.js';
+import Home from './pages/Home.js';
 import SearchCompetencyPage from './pages/SearchCompetency.js';
 import CompetencyPage from './pages/Competency.js';
 import CompetencyValidationPage from './pages/CompetencyValidation.js';
@@ -27,7 +27,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/" exact><NavWrapper><Home /></NavWrapper></Route>
 
         <Route path="/login" exact><LoginPage /></Route>
         <Route path="/register" exact><RegisterPage /></Route>
@@ -48,7 +48,7 @@ function App() {
         <Route path="/profile/notifications"><NavWrapper><ProfileNotificationsPage /></NavWrapper></Route>
         <Route path="/profile/competencies"><NavWrapper><ProfileCompetenciesPage /></NavWrapper></Route>
         <Route path="/profile/groups"><NavWrapper><ProfileGroupsPage /></NavWrapper></Route>
-        <Route path="/profile/messages"><NavWrapper><Test /></NavWrapper></Route>
+        <Route path="/profile/messages"><NavWrapper><Home /></NavWrapper></Route>
         <Route path="/profile"><NavWrapper><ProfilePage /></NavWrapper></Route>
       </Switch>
     </Router>

@@ -6,6 +6,7 @@ import { BsFolderPlus, BsCheck } from 'react-icons/bs';
 import CompetencyValidation from '../components/CompetencyValidation.js';
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 // Button de vérification lié au modal
 function AcceptValidation(setShow) {

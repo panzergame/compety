@@ -9,6 +9,7 @@ import 'react-html5-camera-photo/build/css/index.css';
 import Competency from '../components/Competency.js';
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);

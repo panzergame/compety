@@ -5,8 +5,11 @@ import { ListGroup, Card, Button } from 'react-bootstrap';
 
 import AuthService from '../services/Auth.js';
 import ResourceService from '../services/Resource.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 export default function ProfileGroupPage() {
+  BreadCrumbService.push(2, 'Mes groupes', '/profile/groups');
+
   const [isLoading, setLoading] = useState(true);
   const [groups, setGroups] = useState([]);
 
