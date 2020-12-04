@@ -12,7 +12,7 @@ function AcceptValidation(setShow) {
   return (props) => {
     function onAccept(e) {
       e.preventDefault();
-      UserService.acceptValidation(props.validation).then(
+      UserService.acceptValidation(props.validation.id).then(
         ResourceService.competencyValidation(props.validation.id).then(validation => {
           props.setValidation(validation);
           setShow(true);

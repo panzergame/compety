@@ -42,8 +42,10 @@ export default function ValidateCompetencyPage() {
     e.preventDefault();
     console.log(file);
 
-    UserService.validateCompetency(competency, file, photoUri, comment).then(setCompetency);
-    setShow(true);
+    UserService.validateCompetency(competency, file, photoUri, comment).then(() => {
+      ResourceService.competency(competencyId).then(setCompetency);
+      setShow(true);
+    });
   }
 
   if (isLoading) {
@@ -58,7 +60,9 @@ export default function ValidateCompetencyPage() {
           <BsCheck className="mr-3"/>
           <div>Validation de</div>
         </Card.Title>
-        <Card.Subtitle>{competency.title}</Card.Subtitle>
+        <Card.Subtitle>
+          <a href={'/competency?competencyId=' + competency.id}>{competency.title}</a>
+        </Card.Subtitle>
         <hr />
       
         <Card.Title className="d-flex align-items-center">
