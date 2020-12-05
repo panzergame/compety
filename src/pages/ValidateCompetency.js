@@ -80,13 +80,6 @@ export default function ValidateCompetencyPage() {
             </Form.Label>
             <Form.File onChange={e => setFile(e.target.files[0]) }/>
           </Form.Group>
-          
-          <Form.Group>
-            <Form.Label>
-              Prendre une photo
-            </Form.Label>
-            <Camera onTakePhoto = {dataUri => setPhotoUri(dataUri) }/>
-            </Form.Group>
 
           <Form.Group>
             <Form.Label>

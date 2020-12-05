@@ -32,7 +32,7 @@ export default function BreadCrumb() {
   if (items.length > 1) {
     const lastItem = items[items.length - 1];
     return (
-      <Breadcrumb>
+      <Breadcrumb bsPrefix="breadcrumb m-0">
         {items.slice(0, -1).map(elem => {
           return (<Breadcrumb.Item key={elem.url} href={elem.url}>{elem.html}</Breadcrumb.Item>);
         })}

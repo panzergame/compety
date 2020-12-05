@@ -39,6 +39,11 @@ export default function CompetencyValidation(props) {
     return <div>Chargement... {validationId}</div>;
   }
   
+  const isPhoto = validation.hasfile && validation.fileName.match(/.(jpg|jpeg|png|gif)$/i);
+  const fileUrl = ResourceService.competencyValidatedFileUrl(validation.id);
+  
+  console.log(validation.fileName, isPhoto);
+  
   return (
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
@@ -72,11 +77,18 @@ export default function CompetencyValidation(props) {
             <BsFolderPlus className="mr-3"/>
             <div>Consulter la preuve</div>
         </Card.Title>
+
+        {validation.comment &&
+          <div className="small">
+          {validation.comment}
+          </div>
+        }
+
         <div className="m-0">
-          {validation.hasfile &&
-            <a href={ResourceService.competencyValidatedFileUrl(validation.id)}>Fichier {validation.fileName}</a>}
-          {validation.hasphoto &&
-            <Image src={ResourceService.competencyValidatedPhotoUrl(validation.id)} fluid/>
+          {validation.hasfile && !isPhoto &&
+            <a href={fileUrl}>Fichier {validation.fileName}</a>}
+          {isPhoto &&
+            <Image src={fileUrl} fluid/>
           }
         </div>
         
