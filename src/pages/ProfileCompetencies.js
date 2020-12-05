@@ -10,7 +10,7 @@ import BreadCrumbService from '../services/BreadCrumb.js';
 import Section from '../components/Section.js';
 
 export default function ProfileCompetenciesPage() {
-  BreadCrumbService.push(2, 'Mes compétences', '/profile/competencies');
+  BreadCrumbService.pushLocation(2, 'MyCompetencies', 'Mes compétences');
 
   const [isLoading, setLoading] = useState(true);
   const [sections, setSections] = useState();
@@ -30,7 +30,6 @@ export default function ProfileCompetenciesPage() {
 
   return (
     <>
-      <div>Mes compétences</div>
       <Accordion>
         {sections.map(section => {
           return (<Section section={section} key={section.id}/>);

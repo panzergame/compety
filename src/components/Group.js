@@ -23,7 +23,7 @@ export default function Group(props) {
 
   useEffect(() => {
       if (group) {
-        BreadCrumbService.push(4, group.title, '/group?groupId=' + group.id);
+        BreadCrumbService.push(4, 'Group', group.title, '/group?groupId=' + group.id);
       }
   }, [group]);
 

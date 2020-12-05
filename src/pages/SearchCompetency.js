@@ -15,6 +15,8 @@ export default function SearchCompetencyPage(props) {
   const query = urlQuery.get("query");
   const profileId = urlQuery.get("profileId");
 
+  BreadCrumbService.pushLocation(2, 'Search', query ? '"' + query + '"' : '');
+  
   return (
     <>
       <SearchCompetencyBar />

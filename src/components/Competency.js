@@ -21,7 +21,7 @@ export default function Competency(props) {
 
   useEffect(() => {
       if (competency) {
-        BreadCrumbService.push(3, competency.title, '/competency?competencyId=' + competency.id);
+        BreadCrumbService.push(10, 'Competency', competency.title, '/competency?competencyId=' + competency.id);
       }
   }, [competency]);
 

@@ -7,7 +7,7 @@ import AuthService from '../services/Auth.js';
 import BreadCrumbService from '../services/BreadCrumb.js';
 
 export default function ProfilePage() {
-  BreadCrumbService.push(1, 'Profil', '/profile');
+  BreadCrumbService.push(1, 'Profile', '', '/profile');
   
   const user = AuthService.user;
 

@@ -42,6 +42,8 @@ export default function GroupVerifyCompetenciesPage() {
   const urlQuery = useQuery();
   const groupId = urlQuery.get("groupId");
 
+  BreadCrumbService.pushLocation(6, 'Validation', 'Validation en attente');
+
   useEffect(() => {
     ResourceService.groupComptenciesToVerify(groupId).then(sections => {
       setSections(sections);
@@ -56,7 +58,6 @@ export default function GroupVerifyCompetenciesPage() {
 
   return (
     <>
-      <div>Compétences à valider</div>
       <Accordion>
         {sections.map(section => {
           return (<Section section={section} competencyInline={VerifyCompetencyInline} key={section.id}/>);

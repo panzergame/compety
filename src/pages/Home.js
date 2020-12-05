@@ -7,7 +7,7 @@ import BreadCrumbService from '../services/BreadCrumb.js';
 import AuthService from '../services/Auth.js';
 
 export default function Home() {
-  BreadCrumbService.push(0, 'Home', '/');
+  BreadCrumbService.pushLocation(0, 'Home', '');
   
   return (
     <div className="d-flex flex-column h-100 p-1">

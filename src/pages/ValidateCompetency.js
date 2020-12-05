@@ -29,6 +29,8 @@ export default function ValidateCompetencyPage() {
   const urlQuery = useQuery();
   const competencyId = urlQuery.get("competencyId");
 
+  BreadCrumbService.pushLocation(12, 'Validation', 'Validation');
+  
   useEffect(() => {
     ResourceService.competency(competencyId).then(competency => {
       setCompetency(competency);

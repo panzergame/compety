@@ -9,6 +9,8 @@ export default function GroupCreatePage() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+  BreadCrumbService.pushLocation(8, 'CreateGroup', 'Creation');
+  
   function onSubmit(e) {
     e.preventDefault();
     console.log(title, description);

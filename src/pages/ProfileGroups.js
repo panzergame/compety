@@ -8,7 +8,7 @@ import ResourceService from '../services/Resource.js';
 import BreadCrumbService from '../services/BreadCrumb.js';
 
 export default function ProfileGroupPage() {
-  BreadCrumbService.push(2, 'Mes groupes', '/profile/groups');
+  BreadCrumbService.pushLocation(2, 'MyGroup', 'Mes groupes');
 
   const [isLoading, setLoading] = useState(true);
   const [groups, setGroups] = useState([]);

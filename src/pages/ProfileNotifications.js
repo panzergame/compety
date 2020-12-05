@@ -10,7 +10,7 @@ import BreadCrumbService from '../services/BreadCrumb.js';
 import InviteNotification from '../components/InviteNotification.js';
 
 export default function ProfileNotificationsPage() {
-  BreadCrumbService.push(2, 'Notifications', '/profile/notifications');
+  BreadCrumbService.pushLocation(2, 'MyNotifications', '');
   
   const [isLoading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState([]);

@@ -34,6 +34,8 @@ function AcceptValidation(setShow) {
   }
 }
 export default function VerifyCompetencyPage() {
+  BreadCrumbService.pushLocation(8, 'Verify', 'Vérification');
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);

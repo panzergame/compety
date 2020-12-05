@@ -6,6 +6,7 @@ import { BsFolderPlus, BsCheck } from 'react-icons/bs';
 import CompetencyValidation from '../components/CompetencyValidation.js';
 import ResourceService from '../services/Resource.js';
 import UserService from '../services/User.js';
+import BreadCrumbService from '../services/BreadCrumb.js';
 
 function Revalidate(props) {
   return (<>
@@ -17,6 +18,8 @@ function Revalidate(props) {
 }
 
 export default function CompetencyValidationPage() {
+  BreadCrumbService.push(8, 'Validation', 'Validation', useLocation().search);
+
   return (
       <CompetencyValidation footer={Revalidate}/>
   );
