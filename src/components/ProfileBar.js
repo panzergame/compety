@@ -12,7 +12,6 @@ export default function ProfileName() {
       <Navbar.Collapse className="justify-content-end">
           <Nav.Link href="/profile">{user.firstname + ' ' + user.lastname}</Nav.Link>
           <Nav.Link href="/profile/notifications"><BsFillBellFill /></Nav.Link>
-          <Nav.Link href="/profile/messages"><BsFillChatDotsFill /></Nav.Link>
       </Navbar.Collapse>
     );
   }
