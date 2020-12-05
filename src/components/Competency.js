@@ -19,11 +19,6 @@ export default function Competency(props) {
     });
   }, [props.id]);
 
-  useEffect(() => {
-      if (competency) {
-        BreadCrumbService.push(10, 'Competency', competency.title, '/competency?competencyId=' + competency.id);
-      }
-  }, [competency]);
 
   function remove(e) {
     UserService.removeCompetency(competency).then(
@@ -33,6 +28,8 @@ export default function Competency(props) {
   if (isLoading) {
     return <div>Chargement... {props.id}</div>;
   }
+
+  BreadCrumbService.push(10, 'Competency', competency.title, '/competency?competencyId=' + competency.id);
 
   return (
     <Card className="w-100 h-100">

@@ -5,6 +5,7 @@ import NavWrapper from './components/NavWrapper.js';
 import Home from './pages/Home.js';
 import SearchCompetencyPage from './pages/SearchCompetency.js';
 import CompetencyPage from './pages/Competency.js';
+import SectionPage from './pages/Section.js';
 import CompetencyValidationPage from './pages/CompetencyValidation.js';
 import ValidateCompetencyPage from './pages/ValidateCompetency.js';
 import VerifyCompetencyPage from './pages/VerifyCompetency.js';
@@ -41,6 +42,8 @@ function App() {
         <Route path="/competency/validation"><NavWrapper><CompetencyValidationPage /></NavWrapper></Route>
         <Route path="/competency/verify"><NavWrapper><VerifyCompetencyPage /></NavWrapper></Route>
         <Route path="/competency/"><NavWrapper><CompetencyPage /></NavWrapper></Route>
+
+        <Route path="/section/"><NavWrapper><SectionPage /></NavWrapper></Route>
         
         <Route path="/company/search/:query?"><NavWrapper><SearchCompetencyPage /></NavWrapper></Route>
         <Route path="/company/:competencyId"><NavWrapper><CompetencyPage /></NavWrapper></Route>     

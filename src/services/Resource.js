@@ -9,6 +9,10 @@ class ResourceService {
   competency(id, userId) {
     return AuthService.get(URL + "competency/", {id, userId});
   }
+  
+  section(id) {
+    return AuthService.get(URL + "section/", {id});
+  }
 
   competencyValidation(validationId) {
     return AuthService.get(URL + "competency/validation", {validationId});
