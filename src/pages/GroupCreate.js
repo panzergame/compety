@@ -15,7 +15,7 @@ export default function GroupCreatePage() {
     e.preventDefault();
     console.log(title, description);
     GroupService.create(title, description).then(group => {
-      console.log(group);
+      window.location.href = '/group?groupId=' + group.id;
     });
   }
   
@@ -28,7 +28,7 @@ export default function GroupCreatePage() {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Mot de passe</Form.Label>
+          <Form.Label>Déscription</Form.Label>
           <Form.Control type="name" placeholder="Entrez une description du groupe" onChange={(e) => setDescription(e.target.value)} defaultValue={description}/>
         </Form.Group>
         <Button variant="primary" type="submit">

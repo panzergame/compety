@@ -41,21 +41,21 @@ export default function CompetencyValidation(props) {
   
   const isPhoto = validation.hasfile && validation.fileName.match(/.(jpg|jpeg|png|gif)$/i);
   const fileUrl = ResourceService.competencyValidatedFileUrl(validation.id);
-  
-  console.log(validation.fileName, isPhoto);
-  
+    
   return (
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
         <Card.Title className="d-flex align-items-center mb-2">
-          <BsCheck className="mr-3"/>
-          <div>Validation</div>
+          <BsCheck />
+          <a className="ml-2" href={'/competency?competencyId=' + validation.competency}>{validation.title}</a>
         </Card.Title>
-        <Card.Subtitle>
-          <a href={'/competency?competencyId=' + validation.competency}>{validation.title}</a>
-        </Card.Subtitle>
-        <hr />
 
+        {validation.prev && 
+          <a className="small" href={'/competency/validation/?validationId=' + validation.prev}>Validation précédente</a>
+        }
+
+        <hr />
+  
         <div className="m-0">
           <span className="mr-2">Validée par</span>
           <a href={"/user?userId=" + validation.user}>{validation.firstname + " " + validation.lastname}</a>
@@ -71,6 +71,7 @@ export default function CompetencyValidation(props) {
             <span className="mr-2">En attente de vérification</span>
           </div>
         }
+        
         <hr />
         
         <Card.Title className="d-flex align-items-center">

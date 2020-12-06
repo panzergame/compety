@@ -4,7 +4,7 @@ import streamToBlob from 'stream-to-blob';
 
 import AuthService from './Auth.js';
 
-const URL = 'https://compety.com:3001/api/action/notification/';
+const URL = process.env.REACT_APP_API_URL + '/api/action/notification/';
 
 class NotificationService {
   read() {

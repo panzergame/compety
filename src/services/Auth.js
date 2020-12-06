@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 
-const URL = 'https://compety.com:3001/api/auth/';
+const URL = process.env.REACT_APP_API_URL + '/api/auth/';
 
 // Service de connexion/deconnexion enregistrant le token et l'utilisateur courant'
 class AuthService {

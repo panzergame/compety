@@ -98,7 +98,7 @@ export default function ValidateCompetencyPage() {
     
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Competence validée</Modal.Title>
+        <Modal.Title>Compétence validée</Modal.Title>
       </Modal.Header>
       <Modal.Body>Votre compétence sera bientôt vérifiée</Modal.Body>
       <Modal.Footer>

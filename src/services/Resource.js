@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import AuthService from './Auth.js';
 
-const URL = 'https://compety.com:3001/api/resource/';
+const URL = process.env.REACT_APP_API_URL + '/api/resource/';
 
 class ResourceService {
   competency(id, userId) {
@@ -26,8 +26,8 @@ class ResourceService {
     return URL + "competency/validation/photo?validationId=" + validationId;
   }
 
-  searchCompetencies(query, profileId) {
-    return AuthService.get(URL + "competency/search/", {query, profileId});
+  searchCompetencies(query, filterId) {
+    return AuthService.get(URL + "competency/search/", {query, filterId});
   }
   
   group(id) {

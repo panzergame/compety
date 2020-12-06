@@ -4,7 +4,7 @@ import streamToBlob from 'stream-to-blob';
 
 import AuthService from './Auth.js';
 
-const URL = 'https://compety.com:3001/api/action/user/';
+const URL = process.env.REACT_APP_API_URL + '/api/action/user/';
 
 class UserService {
   validateCompetency(competency, file, photoUri, comment) {
