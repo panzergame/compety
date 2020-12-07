@@ -1,7 +1,20 @@
 .side-bar-zone {
   height: 100%;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .side-bar-button {
   margin: 50px 10px 50px 0px;
+  pointer-events: all;
+}
+
+body > #root {
+  height: 100vh;
+}
+
+/*  https://stackoverflow.com/questions/34365271/hr-inside-container-with-display-flex-become-corrupted */
+hr {
+  margin-left: 0;
+  margin-right: 0;
 }
