@@ -72,6 +72,11 @@ export default function Home() {
       </Card>
     }
     
+    
+    <div className="mt-auto text-center small">
+		Estelle Pleinet & Tristan Porteries
+		2020
+    </div>
     </div>
   );
 }

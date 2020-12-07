@@ -47,7 +47,7 @@ export default function VerifyCompetencyPage() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Competence vérifiée</Modal.Title>
+          <Modal.Title>Compétence vérifiée</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
