@@ -33,13 +33,17 @@ export default function Competency(props) {
 
   return (
     <Card className="w-100 h-100">
-      <Card.Title className="d-flex justify-content-center w-100">
-        <div className="d-flex align-items-center">
-          <div>{ competency.title }</div>
+      <Card.Title>
+        <div>
+          <div className="text-center">{ competency.title }</div>
         </div>
       </Card.Title>
-      <Card.Subtitle>
+      <Card.Subtitle className="ml-2 mr-2">
       <div>
+        <div className="d-flex justify-content-center">
+          type : {competency.type}
+        </div>
+        <hr />
         {competency.validated && competency.validated.verification &&
           <div>
             <BsCheckAll /> <span>Vérifié</span>

@@ -24,8 +24,9 @@ export default function CompetencyValidation(props) {
   
   function onComment(e) {
     e.preventDefault();
-    UserService.commentValidation(validation.id, comment).then(
-      ResourceService.competencyValidation(validation.id).then(setValidation));
+    UserService.commentValidation(validation.id, comment).then(res => {
+      ResourceService.competencyValidation(validation.id).then(setValidation);
+    }).catch(err => console.log(err));
   }
   
   useEffect(() => {
